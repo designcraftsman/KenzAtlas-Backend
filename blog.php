@@ -1,3 +1,5 @@
+<?php require_once('connection.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,17 +22,25 @@
     <div class="container-fluid p-3 blog  ">
         <div  class="row blog__container">
           <div id="postsContainer" class="col-lg-8 col-md-12 col-12 blog__container__posts">
+            <?php 
+                $sqlQuery = 'SELECT * FROM articles';
+                $articlesStatement = $db->prepare($sqlQuery);
+                $articlesStatement->execute();
+                $articles = $articlesStatement->fetchAll();
+                foreach ($articles as $article) { 
+            ?>
             <div class="row align-items-center m-2 mt-5 blog__container__posts__post">
               <div class="col-lg-5 col-md-6 col-12 blog__container__posts__post__imgContainer">
-                <img src="assets/img/homePage/blogSection/article1.jpg" class="w-100 object-fit-cover blog__container__posts__post__imgContainer__img" alt="">
+                <img src="<?php echo($article['imgArticle']); ?>" class="w-100 object-fit-cover blog__container__posts__post__imgContainer__img" alt="">
               </div>
               <div class="col-lg-7 col-md-6 col-12 blog__container__posts__post__text">
-                <h2 class="fs-3 blog__container__posts__post__text__title m-2">Solution pour l'acné et les peaux sensibles</h2>
-                <p class="text-body fs-5 fw-light blog__container__posts__post__text__body m-2">Amet porttitor eget dolor morbi non. Laoreet id donec ultrices tincidunt arcu non sodales neque. Laoreet sit amet cursus sit. Urna id volutpat lacus laoreet non curabitur gravidaVel facilisis volutpat</p>
-                <p class="fw-lighter  fs-6 blog__container__posts__post__text__date m-2">Decembre 04 2023</p>
+                <h2 class="fs-3 blog__container__posts__post__text__title m-2"><?php echo($article['titreArticle']); ?></h2>
+                <p class="text-body fs-5 fw-light blog__container__posts__post__text__body m-2"><?php echo($article['contenuArticle']); ?></p>
+                <p class="fw-lighter  fs-6 blog__container__posts__post__text__date m-2"><?php echo($article['dateArticle']); ?></p>
                 <button class="btn btn-dark    text-secondary fw-bold m-2">En savoir plus</button>
               </div>
             </div>
+            <?php }?>
             <div class="row align-items-center m-2 mt-5 blog__container__posts__post">
               <div class="col-lg-5 col-md-6 col-12 blog__container__posts__post__imgContainer">
                 <img src="assets/img/homePage/blogSection/article1.jpg" class="w-100 object-fit-cover blog__container__posts__post__imgContainer__img" alt="">
