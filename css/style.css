@@ -279,7 +279,8 @@ html {
   animation-delay: 600ms;
   animation-fill-mode: both;
 }
-.blog__container__posts__post__img img {
+.blog__container__posts__post__imgContainer img {
+  width: 100%;
   height: 300px;
 }
 .blog__container__posts__post__text__title {

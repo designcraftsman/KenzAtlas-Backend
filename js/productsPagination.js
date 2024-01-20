@@ -80,6 +80,7 @@ function displayData(data, sortingOption) {
   const paginationHTML = generatePaginationHTML(currentPage, totalPages);
 
   paginationContainer.innerHTML = paginationHTML;
+  // Display or hide pagination based on the number of pages
   paginationContainer.style.display = totalPages > 1 ? 'flex' : 'none';
 }
 

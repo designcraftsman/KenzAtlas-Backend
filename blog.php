@@ -31,9 +31,10 @@
             ?>
             <div class="row align-items-center m-2 mt-5 blog__container__posts__post">
               <div class="col-lg-5 col-md-6 col-12 blog__container__posts__post__imgContainer">
-                <img src="<?php echo($article['imgArticle']); ?>" class="w-100 object-fit-cover blog__container__posts__post__imgContainer__img" alt="">
+                <img src="<?php echo($article['imgArticle']); ?>" class=" blog__container__posts__post__imgContainer__img" alt="">
               </div>
               <div class="col-lg-7 col-md-6 col-12 blog__container__posts__post__text">
+                <span class="d-none blog__container__posts__post__text__categorie"><?php echo($article['categorieArticle']); ?></span>
                 <h2 class="fs-3 blog__container__posts__post__text__title m-2"><?php echo($article['titreArticle']); ?></h2>
                 <p class="text-body fs-5 fw-light blog__container__posts__post__text__body m-2"><?php echo($article['contenuArticle']); ?></p>
                 <p class="fw-lighter  fs-6 blog__container__posts__post__text__date m-2"><?php echo($article['dateArticle']); ?></p>
@@ -41,52 +42,8 @@
               </div>
             </div>
             <?php }?>
-            <div class="row align-items-center m-2 mt-5 blog__container__posts__post">
-              <div class="col-lg-5 col-md-6 col-12 blog__container__posts__post__imgContainer">
-                <img src="assets/img/homePage/blogSection/article1.jpg" class="w-100 object-fit-cover blog__container__posts__post__imgContainer__img" alt="">
-              </div>
-              <div class="col-lg-7 col-md-6 col-12 blog__container__posts__post__text">
-                <h2 class="fs-3 blog__container__posts__post__text__title m-2">Solution pour l'acné et les peaux sensibles</h2>
-                <p class="text-body fs-5 fw-light blog__container__posts__post__text__body m-2">Amet porttitor eget dolor morbi non. Laoreet id donec ultrices tincidunt arcu non sodales neque. Laoreet sit amet cursus sit. Urna id volutpat lacus laoreet non curabitur gravidaVel facilisis volutpat</p>
-                <p class="fw-lighter  fs-6 blog__container__posts__post__text__date m-2">Decembre 04 2023</p>
-                <button class="btn btn-dark    text-secondary fw-bold m-2">En savoir plus</button>
-              </div>
-            </div>
-            <div class="row align-items-center m-2 mt-5 blog__container__posts__post">
-              <div class="col-lg-5 col-md-6 col-12 blog__container__posts__post__imgContainer">
-                <img src="assets/img/homePage/blogSection/article1.jpg" class="w-100 object-fit-cover blog__container__posts__post__imgContainer__img" alt="">
-              </div>
-              <div class="col-lg-7 col-md-6 col-12 blog__container__posts__post__text">
-                <h2 class="fs-3 blog__container__posts__post__text__title m-2">Solution pour l'acné et les peaux sensibles</h2>
-                <p class="text-body fs-5 fw-light blog__container__posts__post__text__body m-2">Amet porttitor eget dolor morbi non. Laoreet id donec ultrices tincidunt arcu non sodales neque. Laoreet sit amet cursus sit. Urna id volutpat lacus laoreet non curabitur gravidaVel facilisis volutpat</p>
-                <p class="fw-lighter  fs-6 blog__container__posts__post__text__date m-2">Decembre 04 2023</p>
-                <button class="btn btn-dark    text-secondary fw-bold m-2">En savoir plus</button>
-              </div>
-            </div>
             
-            
-            <div class="row align-items-center m-2 mt-5 blog__container__posts__post">
-              <div class="col-lg-5 col-md-6 col-12  blog__container__posts__post__imgContainer">
-                <img src="assets/img/homePage/blogSection/article1.jpg" class="w-100 object-fit-cover blog__container__posts__post__imgContainer__img" alt="">
-              </div>
-              <div class="col-lg-7 col-md-6 col-12  blog__container__posts__post__text">
-                <h2 class="fs-3 blog__container__posts__post__text__title m-2">Solution pour l'acné et les peaux sensibles</h2>
-                <p class="text-body fs-5 fw-light blog__container__posts__post__text__body m-2">Amet porttitor eget dolor morbi non. Laoreet id donec ultrices tincidunt arcu non sodales neque. Laoreet sit amet cursus sit. Urna id volutpat lacus laoreet non curabitur gravidaVel facilisis volutpat</p>
-                <p class="fw-lighter  fs-6 blog__container__posts__post__text__date m-2">Decembre 04 2023</p>
-                <button class="btn btn-dark    text-secondary fw-light m-2">En savoir plus</button>
-              </div>
-            </div>
-            <div class="row align-items-center m-2 mt-5 blog__container__posts__post">
-              <div class="col-lg-5 col-md-6 col-12  blog__container__posts__post__imgContainer">
-                <img src="assets/img/homePage/blogSection/article1.jpg" class="w-100 object-fit-cover blog__container__posts__post__imgContainer__img" alt="">
-              </div>
-              <div class="col-lg-7 col-md-6 col-12  blog__container__posts__post__text">
-                <h2 class="fs-3 blog__container__posts__post__text__title m-2">Solution pour l'acné et les peaux sensibles</h2>
-                <p class="text-body fs-5 fw-light blog__container__posts__post__text__body m-2">Amet porttitor eget dolor morbi non. Laoreet id donec ultrices tincidunt arcu non sodales neque. Laoreet sit amet cursus sit. Urna id volutpat lacus laoreet non curabitur gravidaVel facilisis volutpat</p>
-                <p class="fw-lighter  fs-6 blog__container__posts__post__text__date m-2">Decembre 04 2023</p>
-                <button class="btn btn-dark   text-secondary fw-bold m-2">En savoir plus</button>
-              </div>
-            </div>
+
           </div>
           <div class="col-lg-4 col-md-12 col-12   mt-5 blog__container__aside ">
             <div class=" col-12">
