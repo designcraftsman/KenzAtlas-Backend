@@ -8,19 +8,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     heroSectionButtons.forEach(function(button) {
       button.addEventListener('click', function() {
-        window.location.href = 'shop.html';
+        window.location.href = 'shop';
             });
     });
   
     exploreHair.addEventListener('click', function() {
       // Navigate to shop.html
-      window.location.href = 'shop.html';
+      window.location.href = 'shop';
     });
     const exploreSkin = document.getElementById('exploreSkin');
   
     exploreSkin.addEventListener('click', function() {
       // Navigate to shop.html
-      window.location.href = 'shop.html';
+      window.location.href = 'shop';
     });
   });
 

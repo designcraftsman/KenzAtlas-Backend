@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kenzAtlas</title>
-    <link rel="icon" href="assets/img/logo/LOGO_2.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body >
-    <!--navbar debut-->
-    <nav class="navbar navbar-light bg-primary sticky-top  p-0 m-0  ">
+ <!--navbar debut-->
+ <nav class="navbar navbar-light bg-primary sticky-top  p-0 m-0  ">
         <div class="container-fluid navbar__container m-0 p-0">
           <a class=" m-0 p-0 ps-3 " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
              <i  class="fa-solid fa-bars-staggered fa-2xl navbar__container__icon navbar__icon "></i>
           </a>
-            <a class="navbar-brand " href="index.html">
+            <a class="navbar-brand " href="index">
                 <!--Logo image-->
                 <img src="assets/img/logo/svg_white.svg" alt=""  width="180" class="d-inline-block align-text-top">
             </a>
@@ -26,7 +15,7 @@
                 <a  type="button" data-bs-toggle="modal" data-bs-target="#login">
                   <i class="fa-solid fa-user fa-xl navbar__container__options__icons d-none d-lg-inline-block navbar__icon" ></i>
                 </a>
-                <a href="cart.html" class="d-inline-block   position-relative navbar__container__options__cart  ">
+                <a href="cart.php" class="d-inline-block   position-relative navbar__container__options__cart  ">
                   <span id="cartIconContainer" class="d-inline-block bg-dark rounded-5"></span>
                   <span id="cartIcon" class=" text-center   text-secondary  fs-6 fw-bolder "></span>   
                   <i class="fa-solid fa-cart-shopping fa-xl pointer-event  navbar__container__options__icons navbar__icon " ></i>
@@ -51,15 +40,15 @@
         </div>
         <div class="offcanvas-body offcanvasNavbar__nav m-0 p-0 text-center  mt-5">
           <hr class="m-0 p-0">
-            <a href="index.html" class="d-block  text-decoration-none pt-3 pb-3 fs-6 offcanvasNavbar__nav__link ">Accueil</a>
+            <a href="index" class="d-block  text-decoration-none pt-3 pb-3 fs-6 offcanvasNavbar__nav__link ">Accueil</a>
             <hr class="m-0 p-0">
-            <a href="shop.html" class="d-block  text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Boutique</a>
+            <a href="shop" class="d-block  text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Boutique</a>
             <hr class="m-0 p-0">
-            <a href="blog.html" class="d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Notre Blog</a>
+            <a href="blog" class="d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Notre Blog</a>
             <hr class="m-0 p-0">
-            <a href="contact.html" class="d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Contactez-Nous</a>
+            <a href="contact" class="d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Contactez-Nous</a>
             <hr class="m-0 p-0">
-            <a href="about.html" class="d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">À propos de KenzAtlas</a>
+            <a href="about" class="d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">À propos de KenzAtlas</a>
             <hr class="m-0 p-0">
           <div class="offcanvas-footer mt-5">
             <ul class="list-unstyled text-center ">
@@ -153,110 +142,3 @@
 
 
     <!-- login and registration forms end -->
-
-
-    <div class="container ">
-        <div class="row p-5">
-            <div class="col-lg-8 col-md-10 m-auto  col-12 p-3 mt-lg-0   ">
-                <h2 class="fw-bold fs-3">Informations de livraison</h2>
-                <form class="row mt-4">
-                  <div class="mb-3 col-lg-6 col-md-6 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" id="exampleFormControlInput1" placeholder="Nom">
-                  </div>
-                  <div class="mb-3 col-lg-6 col-md-6 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" id="exampleFormControlInput1" placeholder="Prénom">
-                  </div>
-                  <div class="mb-3 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" id="exampleFormControlInput1" placeholder="Adresse">
-                  </div>
-                  <div class="mb-3 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" id="exampleFormControlInput1" placeholder="Ville">
-                  </div>
-                  <div class="mb-3 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" id="exampleFormControlInput1" placeholder="Code Postal">
-                  </div>
-                  <div class="mb-3 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" id="exampleFormControlInput1" placeholder="Telephone">
-                  </div>
-                  <div class="mb-3">
-                    <textarea class="form-control fs-5 p-3" id="exampleFormControlTextarea1" placeholder="Notes de commande (facultatif)"  rows="3"></textarea>
-                  </div>
-                </form>
-            </div>
-            <div class="col-lg-3 col-md-8 col-12 m-auto  p-3">
-                <h2 class="fw-bold fs-5">Récapitulatif de la commande</h2>
-                <div class="orderRecapProducts">
-                    
-                    <!-- Checkout.js script-->
-
-
-                </div>
-                <hr class="border-primary border-3 ">
-                <div class="d-flex justify-content-between mt-2 align-items-center ">
-                    <h4 class="fs-5 fw-normal  m-0">Livraison : </h4>
-                    <span  class="fs-5 fw-semibold  ">0.00dh</span>
-                </div>
-                <hr class="border-primary border-3 ">
-                <div class="d-flex justify-content-between align-items-center  mt-2 ">
-                  <h4 class="fs-5 fw-normal m-0">Paiement : </h4>
-                  <span  class="fs-5 fw-semibold   ">à la livraison</span>
-              </div>
-                <hr class="border-primary border-3 ">
-                <div class="d-flex justify-content-between align-items-center  mt-2 ">
-                  <h4 class="fs-5 fw-normal  m-0">Total : </h4>
-                  <span  class="fs-5 fw-semibold "><span id="totalCost"></span> dh</span>
-              </div>
-              <hr class="border-primary border-3 ">
-              <div class="d-flex justify-content-between align-items-center  mt-2 ">
-                  <p>Vos données personnelles seront utilisées pour traiter votre commande, soutenir votre expérience sur ce site et à d'autres fins décrites dans notre <a href="Politique-de-Confidentialité.html">politique de confidentialité.</a></p>
-              </div>  
-              <button class="btn btn-lg btn-primary text-secondary rounded w-100 fs-5  mt-4">Confirmer ma commande</button>
-            </div>
-        </div>
-    </div>
-
-
-    
-    <!-- footer start-->
-
-  <!-- footer start-->
-
-  <footer class="container-fluid  bg-dark pb-lg-0 pb-5"> 
-    <div class="container p-5">
-      <div class="row text-primary d-flex justify-content-between align-items-center  ">
-        <div class="col-lg-3 col-md-4 col-12  ">
-          <img src="assets/img/logo/svg_yellow (1).svg"  class="d-block w-100  " alt="">
-          <ul class="list-unstyled text-center text-secondary  mt-4 ">
-            <li class="d-inline m-2 "><a class="text-decoration-none socialLinks text-secondary " href="#"><i class="fa-brands fa-facebook fa-lg"></i></a></li>
-            <li class="d-inline m-2 "><a class="text-decoration-none socialLinks text-secondary " href="#"><i class="fa-brands fa-instagram fa-lg"></i></a></li>
-            <li class="d-inline m-2"><a class="text-decoration-none socialLinks text-secondary " href="#"><i class="fa-brands fa-twitter fa-lg"></i></a></li>
-            <li class="d-inline m-2"><a class="text-decoration-none socialLinks text-secondary " href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-4 col-12  text-lg-start text-md-start text-center mt-3 ">
-          <h4>A propos</h3>
-            <ul class="list-unstyled text-secondary  ">
-              <li class="fs-6"><a href="about.html" class="text-decoration-none   footer-links">Notre histoire</a></li>
-              <li class="fs-6"><a href="contact.html " class="text-decoration-none  footer-links">Contact</a></li>
-            </ul>
-        </div>
-        <div class="col-lg-3 col-md-4 col-12 col-2 text-lg-start text-md-start text-center mt-3 ">
-          <h4>Aide</h3>
-            <ul class="list-unstyled text-secondary  ">
-              <li class="fs-6"><a href="terms-conditions.html" class="text-decoration-none    footer-links">Termes & conditions</a></li>
-              <li class="fs-6"><a href="Politique-de-Confidentialité.html" class="text-decoration-none   footer-links">Politique de confidentialité</a></li>
-            </ul>
-        </div>
-      </div>
-      <hr class="border-primary border-3  text-center mt-3">
-      <p class="text-center text-secondary fs-6 opacity-75 ">© 2023 DesignCraftsMan Tous droits réservés.</p>
-    </div>
-  </footer>
-
-  <script src="js/explore.js"></script>
-  <script src="js/scrollReveal.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/checkout.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="js/searchBar.js"></script></body>
-  </html>
