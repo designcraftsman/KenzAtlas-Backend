@@ -120,21 +120,49 @@
             </div>
           </div>
           <div class="modal-body">
-            <form action="user.html p-5">
-              <input type="text" class="p-2 w-100 m-auto mt-3 fs-5 border-3 rounded form-control  " placeholder="Nom" >
-              <input type="text" class="p-2 w-100 m-auto mt-3 fs-5 border-3  rounded  form-control " placeholder="Prénom" >
-              <input type="text" class="p-2 w-100 m-auto mt-3 fs-5 border-3 rounded form-control  " placeholder="Email" >
-              <input type="text" class="p-2 w-100 m-auto mt-3 fs-5 border-3  rounded  form-control " placeholder="Mot de passe" >
+            <form method="POST">
+              <input type="text" class="p-2 w-100 m-auto mt-3 fs-5 border-3 rounded form-control  " name="nomUtulisateur" placeholder="Nom" >
+              <input type="text" class="p-2 w-100 m-auto mt-3 fs-5 border-3  rounded  form-control "name="prenomUtulisateur" placeholder="Prenom" >
+              <input type="email" class="p-2 w-100 m-auto mt-3 fs-5 border-3 rounded form-control  "name="emailUtulisateur" placeholder="Email" >
+              <input type="password" class="p-2 w-100 m-auto mt-3 fs-5 border-3  rounded  form-control "name="motdepasseUtulisateur" placeholder="Mot de passe" >
               <div class="form-check mt-3 fs-6 ms-1">
                 <input class="form-check-input " type="checkbox" value="" id="flexCheckChecked" >
                 <label class="form-check-label " for="flexCheckChecked">
                   J'ai lu et j'accepte <a href="terms-conditions.html"> les termes et les conditions d'utulisations</a>.
                 </label>
               </div>
-              <button class="btn btn-primary w-100 m-auto  mt-3 text-secondary fs-5 border-0 rounded fw-bolder ">Créer compte</button>
+              <button type="submit" class="btn btn-primary w-100 m-auto  mt-3 text-secondary fs-5 border-0 rounded fw-bolder ">Créer compte</button>
           </form>
           <p class="text-center fs-6 mt-4">Vous avez déjà un compte? <a class="text-primary " type="button" data-bs-target="#login" data-bs-toggle="modal" data-bs-dismiss="modal">Se connecter</a></p>
-        
+          <?php
+    if (!isset($_POST['nomUtulisateur']) || !isset($_POST['prenomUtulisateur']) || !isset($_POST['emailUtulisateur']) || !isset($_POST['motdepasseUtulisateur'])) {
+        echo('Veuillez remplir tous les champs.');
+    } else {
+        try {
+            // Establish a database connection (replace with your actual database configuration)
+            include('connection.php');
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $nomUtulisateur = $_POST['nomUtulisateur'];
+            $prenomUtulisateur = $_POST['prenomUtulisateur'];
+            $emailUtulisateur = $_POST['emailUtulisateur'];
+            $motdepasseUtulisateur = $_POST['motdepasseUtulisateur'];
+            $hashedPassword = password_hash($motdepasseUtulisateur, PASSWORD_BCRYPT);
+    
+            // Prepare the SQL query using placeholders
+            $sqlQuery = 'INSERT INTO utulisateur (nomUtulisateur ,prenomUtulisateur ,emailUtulisateur, motdepasseUtulisateur  ) VALUES (:nomUtulisateur,:prenomUtulisateur,:emailUtulisateur,:motdepasseUtulisateur)';
+            $insertData = $db->prepare($sqlQuery);
+            $insertData->execute([
+                'nomUtulisateur' => $nomUtulisateur,
+                'prenomUtulisateur' => $prenomUtulisateur,
+                'emailUtulisateur' => $emailUtulisateur,
+                'motdepasseUtulisateur' => $hashedPassword
+            ]);
+        } catch (PDOException $e) {
+            echo 'An error occurred: ' . $e->getMessage();
+        }
+    }
+
+?>
           </div>
         </div>
       </div>

@@ -7,8 +7,10 @@ function extractPostData(productElement) {
   const body = productElement.querySelector('.blog__container__posts__post__text__body').textContent;
   const date = productElement.querySelector('.blog__container__posts__post__text__date').textContent;
   const image = productElement.querySelector('.blog__container__posts__post__imgContainer__img').getAttribute('src');
+  const categorie = productElement.querySelector('.blog__container__posts__post__text__categorie').textContent;
+  const id = productElement.querySelector('.blog__container__posts__post__text__idArticle').textContent;
 
-  return { title, body, date, image };
+  return { title, body, date, image, categorie, id };
 }
 
 function extractAllPostsData() {
@@ -34,7 +36,7 @@ function displayData() {
   const currentPageData = data.slice(startIndex, endIndex);
   const currentPageHTML = currentPageData.map(post => {
     return `
-    <a href="article" class="text-decoration-none text-dark">
+    <a href="article?idArticle=${post.id}" class="text-decoration-none text-dark">
     <div class="row align-items-center m-2 mt-5 blog__container__posts__post">
         <div class="col-lg-5 col-md-6 col-12 blog__container__posts__post__imgContainer">
         <img src="${post.image}" class="w-100 object-fit-cover blog__container__posts__post__imgContainer__img" alt="">
