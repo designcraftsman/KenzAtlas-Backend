@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,34 +18,54 @@
 
 
     <div class="container user">
-        
+            <h2 class="text-center fs-2 fw-semibold mt-5">Bienvenue <?php echo($_SESSION['prenomUtulisateur']); ?></h2>
+            <h2 class="fw-light fs-6 text-center w-75 mt-4 m-auto ">Gérez vos informations, ainsi que la confidentialité et la sécurité de vos données pour profiter au mieux des services KenzAtlas.</h2>
+            <hr class="border-primary border-3 ">
         <form class="row mt-5 ">
-            <h2 class="fw-bold fs-3 ">Informations sur le compte</h2>
-            <div class="col-lg-4 col-md-3 col-12  mt-3">
+        <h3 class="fw-light fs-5  "><i class="fa-solid fa-user "></i> Informations Personnelles</h3>
+            <div class="col-lg-6 col-md-3 col-12  mt-3">
                 <label for="nom d-block">Nom</label>
-                <input type="text" name="nom" class="p-2 w-100   d-block rounded rounded-3 border-1" placeholder="Latifa">
+                <input type="text" name="nom" class="p-2 w-100 form-control mt-2  d-block rounded rounded-3 border-1" placeholder="<?php echo($_SESSION['prenomUtulisateur']); ?>">
             </div>
-            <div class="col-lg-4 col-md-3 col-12 mt-3">
+            <div class="col-lg-6 col-md-3 col-12 mt-3">
                 <label for="nom d-block">Prénom</label>
-                <input type="text" name="nom" class="p-2 w-100   d-block rounded rounded-3 border-1" placeholder="Latifa">
+                <input type="text" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" placeholder="<?php echo($_SESSION['nomUtulisateur']); ?>">
             </div>
-            <div class="col-lg-4 col-md-3 col-12 mt-3">
-                <label for="nom d-block">Email</label>
-                <input type="text" name="nom" class="p-2 w-100   d-block rounded rounded-3 border-1" placeholder="Latifa@gmail.com">
+            <div class="col-lg-6 col-md-3 col-12 mt-3">
+                <label for="nom d-block">Date de naissance</label>
+                <input type="date" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" >
             </div>
-            <div class="col-lg-6 col-md-5 col-12 mt-3">
-                <label for="nom d-block">Mot de passe</label>
-                <input type="password" name="nom" class="p-2 w-100   d-block rounded rounded-3 border-1" placeholder="password">
+            <div class="col-lg-6 col-md-3 col-12 mt-3">
+                <label for="nom d-block">Telephone</label>
+                <input type="text" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" placeholder="+212 654 321 123"> 
             </div>
-            <div class="col-lg-6 col-md-5 col-12 mt-3">
-                <label for="nom d-block">Confirmer le mot de passe</label>
-                <input type="password" name="nom" class="p-2 w-100   d-block rounded rounded-3 border-1" placeholder="password">
-            </div>
-            <div class="col-12 mt-3"> 
-                <textarea  class="col-12 p-3  mt-3" name="adress" id="adress" value="hay al azhar benroussi casablanca "placeholder ="Adresse" rows="3"></textarea>
+            <div class="col-lg-6 col-md-3 col-12 mt-3">
+                <label for="nom d-block">Adresse email</label>
+                <input type="text" name="nom" class="p-2 w-100 form-control mt-2  d-block rounded rounded-3 border-1" placeholder="<?php echo($_SESSION['emailUtulisateur']); ?>"> 
             </div>
             <div class="col-12 mt-3">
-                <button type="submit" class="btn btn-primary text-secondary btn-lg">Enregistrer les modifications</button>
+                <button type="submit" class="btn btn-primary mt-2 text-secondary ">Enregistrer les modifications</button>
+            </div>
+        </form>
+        <hr class="border-primary border-3 mt-5">
+        <form class="row mt-5 ">
+        <h3 class="fw-light fs-5  "><i class="fa-solid fa-lock"></i> Mot de passe</h3>
+          <div class="row">
+            <div class="col-lg-6 col-md-3 col-12  mt-3">
+                <label for="nom d-block">Mot de passe actuel</label>
+                <input type="password" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" >
+            </div>
+          </div>
+            <div class="col-lg-6 col-md-3 col-12 mt-3">
+                <label for="nom d-block">Nouveau mot de passe</label>
+                <input type="password" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1"  >
+            </div>
+            <div class="col-lg-6 col-md-3 col-12 mt-3">
+                <label for="nom d-block">Confirmer le nouveau mot de passe</label>
+                <input type="password" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" >
+            </div>
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary text-secondary mt-2">Enregistrer les modifications</button>
             </div>
         </form>
 

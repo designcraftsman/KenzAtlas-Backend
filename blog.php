@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php require_once('connection.php'); ?>
 <?php 
     if(isset($_GET['categorie'])){

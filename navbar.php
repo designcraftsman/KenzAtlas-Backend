@@ -1,3 +1,39 @@
+<?php 
+                if (isset($_POST['emailUtulisateur']) || isset($_POST['motdepasseUtulisateur'])) {
+                    try {
+                        // Establish a database connection (replace with your actual database configuration)
+                        include('connection.php');
+                        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $emailUtulisateur = $_POST['emailUtulisateur'];
+                        $motdepasseUtulisateur = $_POST['motdepasseUtulisateur'];
+                        // Prepare the SQL query using placeholders
+                        $sqlQuery = 'SELECT * from utulisateur WHERE emailUtulisateur = :email';
+                        $stmt = $db->prepare($sqlQuery);
+                        $stmt->execute([
+                            'email' => $emailUtulisateur,
+                        ]);
+
+                        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        // Check if a user with the given email exists
+                        if ($user) {
+                            // Verify the hashed password
+                            if (password_verify($motdepasseUtulisateur, $user['motdepasseUtulisateur'])) {
+                                $_SESSION['nomUtulisateur'] = $user['nomUtulisateur'];
+                                $_SESSION['prenomUtulisateur'] = $user['prenomUtulisateur'];
+                                $_SESSION['emailUtulisateur'] = $user['emailUtulisateur'];
+                            } else {
+                                echo 'Mote de passe incorrect.';
+                            }
+                        } else {
+                            echo 'Aucun compte trouvé.';
+                        }
+                    } catch (PDOException $e) {
+                        echo 'An error occurred: ' . $e->getMessage();
+                    }
+                }
+            ?> 
+ 
  <!--navbar debut-->
  <nav class="navbar navbar-light bg-primary sticky-top  p-0 m-0  ">
         <div class="container-fluid navbar__container m-0 p-0">
@@ -9,13 +45,28 @@
                 <img src="assets/img/logo/svg_white.svg" alt=""  width="180" class="d-inline-block align-text-top">
             </a>
             <div class="navbar__container__options order-lg-2 pe-4 ">
-                <a data-bs-toggle="collapse" href="#collapseExample" type="button" aria-expanded="false" aria-controls="collapseExample">
+                <a class="m-1" data-bs-toggle="collapse" href="#collapseExample" type="button" aria-expanded="false" aria-controls="collapseExample">
                   <i class="fa-solid fa-magnifying-glass fa-xl navbar__container__options__icons d-none d-lg-inline-block navbar__icon" ></i>
                 </a>
-                <a  type="button" data-bs-toggle="modal" data-bs-target="#login">
+                <?php if(!isset($_SESSION['nomUtulisateur'])){ ?>
+                <a  type="button"class="m-1" data-bs-toggle="modal" data-bs-target="#login">
                   <i class="fa-solid fa-user fa-xl navbar__container__options__icons d-none d-lg-inline-block navbar__icon" ></i>
                 </a>
-                <a href="cart.php" class="d-inline-block   position-relative navbar__container__options__cart  ">
+                <?php }else{ ?>
+                <a  class="text-decoration-none m-1 d-none d-lg-inline-block" data-bs-toggle="collapse" href="#userCollapse" role="button" aria-expanded="false" aria-controls="collapseExample" >
+                  <i class="fa-solid fa-user fa-xl navbar__container__options__icons  navbar__icon m-auto" ></i>
+                   <span class="fs-6 fw-light text-secon text-secondary"><?php echo($_SESSION['prenomUtulisateur'].' '.$_SESSION['nomUtulisateur']); ?></span>
+                   <div class="collapse position-absolute ms-5 " id="userCollapse">
+                    <div class="card card-body text-center  fs-6 fw-normal p-0 ">
+                      <a href="user" class="d-block text-dark  text-decoration-none p-3"><i class="fa-solid fa-user-gear"></i> Mon compte</a>
+                      <hr class="m-0 p-0 border-primary ">
+                      <a  href="signout" class="d-block text-dark text-decoration-none p-3"><i class="fa-solid fa-right-from-bracket"></i> Deconnexion</a>
+                      <hr class="m-0 p-0 border-primary ">
+                    </div>
+                </div>
+                </a>
+                <?php }?>
+                <a href="cart.php" class="d-inline-block  m-lg-1 m-0   position-relative navbar__container__options__cart  ">
                   <span id="cartIconContainer" class="d-inline-block bg-dark rounded-5"></span>
                   <span id="cartIcon" class=" text-center   text-secondary  fs-6 fw-bolder "></span>   
                   <i class="fa-solid fa-cart-shopping fa-xl pointer-event  navbar__container__options__icons navbar__icon " ></i>
@@ -101,13 +152,13 @@
             </div>
           </div>
           <div class="modal-body">
-            <form action="user.html p-5">
-                <input type="text" class="p-2 w-100 m-auto mt-3 fs-5 border-3 rounded form-control  " placeholder="Email" >
-                <input type="text" class="p-2 w-100 m-auto mt-3 fs-5 border-3  rounded  form-control " placeholder="Mot de passe" >
-                <button class="btn btn-primary w-100 m-auto  mt-3 text-secondary fs-5 border-0 rounded fw-bolder ">Se connecter</button>
+            <form method="POST">
+                <input type="email" class="p-2 w-100 m-auto mt-3 fs-5 border-3 rounded form-control  " name="emailUtulisateur" placeholder="Email" >
+                <input type="password" class="p-2 w-100 m-auto mt-3 fs-5 border-3  rounded  form-control "name="motdepasseUtulisateur" placeholder="Mot de passe" >
+                <button type="submit" class="btn btn-primary w-100 m-auto  mt-3 text-secondary fs-5 border-0 rounded fw-bolder ">Se connecter</button>
             </form>
             <p class="text-center fs-6 mt-4">Vous n'avez pas un compte? <a type="button" class="text-primary " data-bs-target="#Register" data-bs-toggle="modal" data-bs-dismiss="modal">Créer un compte.</a></p>
-          </div>
+         </div>
         </div>
       </div>
     </div>
@@ -128,16 +179,15 @@
               <div class="form-check mt-3 fs-6 ms-1">
                 <input class="form-check-input " type="checkbox" value="" id="flexCheckChecked" >
                 <label class="form-check-label " for="flexCheckChecked">
-                  J'ai lu et j'accepte <a href="terms-conditions.html"> les termes et les conditions d'utulisations</a>.
+                  J'ai lu et j'accepte <a href="terms-conditions"> les termes et les conditions d'utulisations</a>.
                 </label>
               </div>
-              <button type="submit" class="btn btn-primary w-100 m-auto  mt-3 text-secondary fs-5 border-0 rounded fw-bolder ">Créer compte</button>
+              <button type="submit" class=" btn btn-primary w-100 m-auto  mt-3 text-secondary fs-5 border-0 rounded fw-bolder ">Créer compte</button>
           </form>
           <p class="text-center fs-6 mt-4">Vous avez déjà un compte? <a class="text-primary " type="button" data-bs-target="#login" data-bs-toggle="modal" data-bs-dismiss="modal">Se connecter</a></p>
           <?php
-    if (!isset($_POST['nomUtulisateur']) || !isset($_POST['prenomUtulisateur']) || !isset($_POST['emailUtulisateur']) || !isset($_POST['motdepasseUtulisateur'])) {
+    if (isset($_POST['nomUtulisateur']) || isset($_POST['prenomUtulisateur']) || isset($_POST['emailUtulisateur']) || isset($_POST['motdepasseUtulisateur'])) {
         echo('Veuillez remplir tous les champs.');
-    } else {
         try {
             // Establish a database connection (replace with your actual database configuration)
             include('connection.php');
