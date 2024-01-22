@@ -1,5 +1,5 @@
 <?php 
-                if (isset($_POST['emailUtulisateur']) || isset($_POST['motdepasseUtulisateur'])) {
+                if (isset($_POST['emailUtulisateur']) && isset($_POST['motdepasseUtulisateur'])) {
                     try {
                         // Establish a database connection (replace with your actual database configuration)
                         include('connection.php');
@@ -19,9 +19,12 @@
                         if ($user) {
                             // Verify the hashed password
                             if (password_verify($motdepasseUtulisateur, $user['motdepasseUtulisateur'])) {
+                                $_SESSION['idUtulisateur'] = $user['idUtulisateur'];	
                                 $_SESSION['nomUtulisateur'] = $user['nomUtulisateur'];
                                 $_SESSION['prenomUtulisateur'] = $user['prenomUtulisateur'];
                                 $_SESSION['emailUtulisateur'] = $user['emailUtulisateur'];
+                                $_SESSION['telephoneUtulisateur'] = $user['telephoneUtulisateur'];
+                                $_SESSION['dateNaissanceUtulisateur'] = $user['dateNaissanceUtulisateur'];
                             } else {
                                 echo 'Mote de passe incorrect.';
                             }
@@ -56,11 +59,15 @@
                 <a  class="text-decoration-none m-1 d-none d-lg-inline-block" data-bs-toggle="collapse" href="#userCollapse" role="button" aria-expanded="false" aria-controls="collapseExample" >
                   <i class="fa-solid fa-user fa-xl navbar__container__options__icons  navbar__icon m-auto" ></i>
                    <span class="fs-6 fw-light text-secon text-secondary"><?php echo($_SESSION['prenomUtulisateur'].' '.$_SESSION['nomUtulisateur']); ?></span>
-                   <div class="collapse position-absolute ms-5 " id="userCollapse">
-                    <div class="card card-body text-center  fs-6 fw-normal p-0 ">
-                      <a href="user" class="d-block text-dark  text-decoration-none p-3"><i class="fa-solid fa-user-gear"></i> Mon compte</a>
-                      <hr class="m-0 p-0 border-primary ">
-                      <a  href="signout" class="d-block text-dark text-decoration-none p-3"><i class="fa-solid fa-right-from-bracket"></i> Deconnexion</a>
+                   <div class="collapse position-absolute ms-4 " id="userCollapse">
+                    <div class="card card-body   fs-6 fw-normal p-0 ">
+                      <p class="fs-6 p-3 m-0 mb-3 mt-3"><?php echo($_SESSION['emailUtulisateur']); ?></p>
+                      <hr class="m-0 p-0 border-primary mb-2">
+                      <a href="user" class="d-block text-dark mb-2  text-decoration-none p-1"><i class="fa-solid fa-boxes-stacked m-2"></i>  Mes commandes</a>
+                      <hr class="m-0 p-0 border-primary mb-2 ">
+                      <a href="user" class="d-block text-dark mb-2  text-decoration-none p-1"><i class="fa-solid fa-user-gear m-2"></i>  Mon compte</a>
+                      <hr class="m-0 p-0 border-primary  mb-2">
+                      <a  href="signout" class="d-block text-dark mb-2 text-decoration-none p-1"><i class="fa-solid fa-right-from-bracket m-2"></i>  Deconnexion</a>
                       <hr class="m-0 p-0 border-primary ">
                     </div>
                 </div>

@@ -1,4 +1,40 @@
 <?php session_start(); ?>
+<?php
+  include('connection.php');
+  if (isset($_POST['nomUtulisateur']) || isset($_POST['prenomUtulisateur']) || isset($_POST['dateNaissanceUtulisateur']) || isset($_POST['telephoneUtulisateur']) || isset($_POST['emailUtulisateur'])) {
+    try {
+      $nomUtulisateur = $_POST['nomUtulisateur'];
+      $prenomUtulisateur = $_POST['prenomUtulisateur'];
+      $emailUtulisateur = $_POST['emailUtulisateur'];
+      $dateNaissanceUtulisateur = $_POST['dateNaissanceUtulisateur'];
+      $telephoneUtulisateur = $_POST['telephoneUtulisateur'];
+      
+      $sqlQuery = 'UPDATE utulisateur 
+             SET nomUtulisateur = :nomUtulisateur,
+                 prenomUtulisateur = :prenomUtulisateur,
+                 emailUtulisateur = :emailUtulisateur,
+                 dateNaissanceUtulisateur = :dateNaissanceUtulisateur,
+                 telephoneUtulisateur = :telephoneUtulisateur
+             WHERE idUtulisateur = :idUtulisateur';
+      // Use prepared statements to prevent SQL injection
+      $updateData = $db->prepare($sqlQuery);
+
+      // Execute the query with the provided values
+      $updateData->execute([
+          'nomUtulisateur' => $nomUtulisateur,
+          'prenomUtulisateur' => $prenomUtulisateur,
+          'emailUtulisateur' => $emailUtulisateur,
+          'dateNaissanceUtulisateur' => $dateNaissanceUtulisateur,
+          'telephoneUtulisateur' => $telephoneUtulisateur,
+          'idUtulisateur' => $_SESSION['idUtulisateur']
+      ]);
+    }catch (PDOException $e) {
+      echo 'An error occurred: ' . $e->getMessage();
+  }
+  }else{
+    echo('Erreur de modification');
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,27 +57,27 @@
             <h2 class="text-center fs-2 fw-semibold mt-5">Bienvenue <?php echo($_SESSION['prenomUtulisateur']); ?></h2>
             <h2 class="fw-light fs-6 text-center w-75 mt-4 m-auto ">Gérez vos informations, ainsi que la confidentialité et la sécurité de vos données pour profiter au mieux des services KenzAtlas.</h2>
             <hr class="border-primary border-3 ">
-        <form class="row mt-5 ">
+        <form class="row mt-5 " method="POST">
         <h3 class="fw-light fs-5  "><i class="fa-solid fa-user "></i> Informations Personnelles</h3>
             <div class="col-lg-6 col-md-3 col-12  mt-3">
                 <label for="nom d-block">Nom</label>
-                <input type="text" name="nom" class="p-2 w-100 form-control mt-2  d-block rounded rounded-3 border-1" placeholder="<?php echo($_SESSION['prenomUtulisateur']); ?>">
+                <input type="text" name="nomUtulisateur" class="p-2 w-100 form-control mt-2  d-block rounded rounded-3 border-1" value="<?php echo($_SESSION['prenomUtulisateur']); ?>">
             </div>
             <div class="col-lg-6 col-md-3 col-12 mt-3">
                 <label for="nom d-block">Prénom</label>
-                <input type="text" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" placeholder="<?php echo($_SESSION['nomUtulisateur']); ?>">
+                <input type="text" name="prenomUtulisateur" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" value="<?php echo($_SESSION['nomUtulisateur']); ?>">
             </div>
             <div class="col-lg-6 col-md-3 col-12 mt-3">
                 <label for="nom d-block">Date de naissance</label>
-                <input type="date" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" >
+                <input type="date" name="dateNaissanceUtulisateur" value="<?php echo($_SESSION['dateNaissanceUtulisateur']);?>"  class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" >
             </div>
             <div class="col-lg-6 col-md-3 col-12 mt-3">
                 <label for="nom d-block">Telephone</label>
-                <input type="text" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" placeholder="+212 654 321 123"> 
+                <input type="tel" name="telephoneUtulisateur" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" value="<?php echo($_SESSION['telephoneUtulisateur']); ?>"> 
             </div>
             <div class="col-lg-6 col-md-3 col-12 mt-3">
                 <label for="nom d-block">Adresse email</label>
-                <input type="text" name="nom" class="p-2 w-100 form-control mt-2  d-block rounded rounded-3 border-1" placeholder="<?php echo($_SESSION['emailUtulisateur']); ?>"> 
+                <input type="email" name="emailUtulisateur" class="p-2 w-100 form-control mt-2  d-block rounded rounded-3 border-1" value="<?php echo($_SESSION['emailUtulisateur']); ?>"> 
             </div>
             <div class="col-12 mt-3">
                 <button type="submit" class="btn btn-primary mt-2 text-secondary ">Enregistrer les modifications</button>
