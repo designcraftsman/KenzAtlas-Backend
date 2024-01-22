@@ -1,10 +1,17 @@
 <?php session_start(); ?>
+<?php require_once('connection.php'); ?>
+<?php
+     $sqlQuery = 'SELECT * FROM produit';
+     $produitsStatement = $db->prepare($sqlQuery);
+     $produitsStatement->execute();
+     $produits = $produitsStatement->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kenzAtlas</title>
+    <title>kenzAtlas-Boutique</title>
     <link rel="icon" href="assets/img/logo/LOGO_2.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -163,11 +170,12 @@
             </div>
           </div>
             <div id="productsContainer" class="row">
+              <?php foreach ($produits as $produit){ ?>
               <div class="col-lg-5 col-md-6 col-10 m-auto product   mt-4 shop__container__products__list__product">
                 <div class="card border-0  m-auto w-100" >
                   <a href="product.html" class="text-decoration-none text-dark">
                     <div class="ProductsImageContainers">
-                      <img src="assets/img/homePage/featuredProducts/product4.jpg" class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
+                      <img src="<?php echo($produit['imageProduit1']); ?>" class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
                       <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
                     </div>
                   <div class="card-body">
@@ -175,13 +183,18 @@
                       <span class="shop__container__products__list__product__details__categorie">savon</span>
                       <span class="shop__container__products__list__product__details__etat">promotion</span>
                     </div>
-                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                    <p class="card-text text-center m-1 shop__container__products__list__product__title title">Parfum</p>
-                    <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i>  <span>52 Reviews</span></p>
+                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price"><?php echo($produit['prixProduit']); ?></span>dh</p>
+                    <p class="card-text text-center m-1 shop__container__products__list__product__title title"><?php echo($produit['nomProduit']); ?></p>
+                    <p class="card-text text-center m-1">
+                      <?php for ($i=0; $i < $produit['moyenneNotation']; $i++) {?>
+                      <i class="fa-solid fa-star fa-xs text-primary "></i>
+                      <?php }?>
+                    <span>52 Reviews</span></p>
                   </div>
                   </a>
                 </div>
               </div>
+              <?php }?>
               <div class="col-lg-5 col-md-6 col-10 m-auto product   mt-4 shop__container__products__list__product">
                 <div class="card border-0  m-auto w-100" >
                   <a href="product.html" class="text-decoration-none text-dark">

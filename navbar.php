@@ -25,6 +25,7 @@
                                 $_SESSION['emailUtulisateur'] = $user['emailUtulisateur'];
                                 $_SESSION['telephoneUtulisateur'] = $user['telephoneUtulisateur'];
                                 $_SESSION['dateNaissanceUtulisateur'] = $user['dateNaissanceUtulisateur'];
+                                $_SESSION['motdepasseUtulisateur'] = $user['motdepasseUtulisateur'];
                             } else {
                                 echo 'Mote de passe incorrect.';
                             }
@@ -52,7 +53,7 @@
                   <i class="fa-solid fa-magnifying-glass fa-xl navbar__container__options__icons d-none d-lg-inline-block navbar__icon" ></i>
                 </a>
                 <?php if(!isset($_SESSION['nomUtulisateur'])){ ?>
-                <a  type="button"class="m-1" data-bs-toggle="modal" data-bs-target="#login">
+                <a  type="button" data-bs-toggle="modal" data-bs-target="#login">
                   <i class="fa-solid fa-user fa-xl navbar__container__options__icons d-none d-lg-inline-block navbar__icon" ></i>
                 </a>
                 <?php }else{ ?>
@@ -61,9 +62,9 @@
                    <span class="fs-6 fw-light text-secon text-secondary"><?php echo($_SESSION['prenomUtulisateur'].' '.$_SESSION['nomUtulisateur']); ?></span>
                    <div class="collapse position-absolute ms-4 " id="userCollapse">
                     <div class="card card-body   fs-6 fw-normal p-0 ">
-                      <p class="fs-6 p-3 m-0 mb-3 mt-3"><?php echo($_SESSION['emailUtulisateur']); ?></p>
+                      <p class="fs-6 p-2  m-0 mb-3 mt-3"><?php echo($_SESSION['emailUtulisateur']); ?></p>
                       <hr class="m-0 p-0 border-primary mb-2">
-                      <a href="user" class="d-block text-dark mb-2  text-decoration-none p-1"><i class="fa-solid fa-boxes-stacked m-2"></i>  Mes commandes</a>
+                      <a href="mes-commandes" class="d-block text-dark mb-2  text-decoration-none p-1"><i class="fa-solid fa-boxes-stacked m-2"></i>  Mes commandes</a>
                       <hr class="m-0 p-0 border-primary mb-2 ">
                       <a href="user" class="d-block text-dark mb-2  text-decoration-none p-1"><i class="fa-solid fa-user-gear m-2"></i>  Mon compte</a>
                       <hr class="m-0 p-0 border-primary  mb-2">
@@ -102,17 +103,25 @@
             <hr class="m-0 p-0">
             <a href="shop" class="d-block  text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Boutique</a>
             <hr class="m-0 p-0">
+            <?php if(isset($_SESSION['nomUtulisateur'])){ ?>
+              <a href="mes-commandes" class="d-lg-none d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Mes commandes</a>
+              <hr class="m-0 p-0">
+            <?php } ?>
             <a href="blog" class="d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Notre Blog</a>
             <hr class="m-0 p-0">
             <a href="contact" class="d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Contactez-Nous</a>
             <hr class="m-0 p-0">
             <a href="about" class="d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">À propos de KenzAtlas</a>
             <hr class="m-0 p-0">
+            <?php if(isset($_SESSION['nomUtulisateur'])){ ?>
+              <a href="signout" class="d-lg-none d-block   text-decoration-none  pt-3 pb-3 fs-6 offcanvasNavbar__nav__link">Se déconnecter</a>
+              <hr class="m-0 p-0">
+            <?php } ?>
           <div class="offcanvas-footer mt-5">
             <ul class="list-unstyled text-center ">
               <li class="d-inline m-2 "><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a></li>
               <li class="d-inline m-2 "><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a></li>
-              <li class="d-inline m-2"><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="#"><i class="fa-brands fa-twitter fa-lg"></i></a></li>
+              <li class="d-inline m-2"><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a></li>
               <li class="d-inline m-2"><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a></li>
             </ul>
           </div>
@@ -124,14 +133,21 @@
       <div class="container-fluid  w-100 ">
         <div class="w-100  p-1 d-flex  justify-content-between align-items-center  ">
           <div class="p-1 text-center">
+            <?php if(!isset($_SESSION['nomUtulisateur'])){  ?>
             <a type="button" data-bs-toggle="modal" data-bs-target="#login"  class="text-decoration-none ">
+              <i class="fa-solid fa-user fa-xl navbar__container__options__icons text-secondary " ></i>
+              <span class="d-block text-secondary ">Se connecter</span>
+            </a>
+            <?php }else{ ?>
+              <a type="button" href="user" class="text-decoration-none ">
               <i class="fa-solid fa-user fa-xl navbar__container__options__icons text-secondary " ></i>
               <span class="d-block text-secondary ">Mon compte</span>
             </a>
+            <?php } ?>
           </div>
           
           <div class="p-1 text-center ">
-            <a href="shop.html" class="text-decoration-none ">
+            <a href="shop" class="text-decoration-none ">
               <i class="fa-solid fa-shop fa-xl text-secondary"></i>
               <span class="d-block text-secondary">boutique</span>
             </a>
@@ -193,7 +209,7 @@
           </form>
           <p class="text-center fs-6 mt-4">Vous avez déjà un compte? <a class="text-primary " type="button" data-bs-target="#login" data-bs-toggle="modal" data-bs-dismiss="modal">Se connecter</a></p>
           <?php
-    if (isset($_POST['nomUtulisateur']) || isset($_POST['prenomUtulisateur']) || isset($_POST['emailUtulisateur']) || isset($_POST['motdepasseUtulisateur'])) {
+    if (isset($_POST['nomUtulisateur']) && isset($_POST['prenomUtulisateur']) && isset($_POST['emailUtulisateur']) && isset($_POST['motdepasseUtulisateur'])) {
         echo('Veuillez remplir tous les champs.');
         try {
             // Establish a database connection (replace with your actual database configuration)

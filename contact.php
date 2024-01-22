@@ -49,7 +49,7 @@
           <ul class="list-unstyled text-center text-secondary  mt-4 ">
             <li class="d-inline m-3 "><a class="text-decoration-none socialLinks  text-dark  " href="#"><i class="fa-brands fa-facebook fa-2xl"></i></a></li>
             <li class="d-inline m-3 "><a class="text-decoration-none socialLinks text-dark  " href="#"><i class="fa-brands fa-instagram fa-2xl"></i></a></li>
-            <li class="d-inline m-3 "><a class="text-decoration-none socialLinks text-dark  " href="#"><i class="fa-brands fa-twitter fa-2xl"></i></a></li>
+            <li class="d-inline m-3 "><a class="text-decoration-none socialLinks text-dark  " href="#"><i class="fa-brands fa-tiktok fa-2xl"></i></a></li>
           </ul>
         </div>
       </div>

@@ -11,42 +11,25 @@
               <hr class="m-0 p-0 border-primary ms-2">
           </div>
           <div class="col-12">
-            <h2 class="fs-5 bg-primary p-2 rounded-4 text-secondary mt-3  fw-light blog__container__aside__title">Articles Récents</h2>
+            <h2 class="fs-5 bg-primary p-2 rounded-4 text-secondary mt-3  fw-light blog__container__aside__title">Articles Populaires</h2>
+            <?php
+              include('connection.php');
+              $sqlQuery = 'SELECT * FROM `articles` ORDER BY `articles`.`vueArticle` DESC LIMIT 5';
+              $articlesStatement = $db->prepare($sqlQuery);
+              $articlesStatement->execute();
+              $articles = $articlesStatement->fetchAll();
+              foreach($articles as $article){
+            ?>
             <div class="row p-2 blog__container__aside__recentPosts align-content-center ">
               <div class="col-4 blog__container__aside__recentPosts__img">
-                <img src="assets/img/homePage/blogSection/article2.jpg" class="w-100 object-fit-cover " alt="">
+                <img src="<?php echo($article['imgArticle']) ?>" class="w-100 object-fit-cover " alt="">
               </div>
               <div class="col-8 blog__container__aside__recentPosts__text ">
-                <p class="fs-6 fw-lighter m-0">Decembre 04 2023</p>
-                <h2 class="fs-6 m-0 blog__container__aside__recentPosts__text__title">Solution pour l'acné et les peaux sensibles</h2>
+                <p class="fs-6 fw-lighter m-0"><?php echo($article['dateArticle']) ?></p>
+                <h2 class="fs-6 m-0 blog__container__aside__recentPosts__text__title"><?php echo($article['titreArticle']) ?></h2>
               </div>
             </div>
-            <div class="row p-2 blog__container__aside__recentPosts align-content-center ">
-              <div class="col-4 blog__container__aside__recentPosts__img">
-                <img src="assets/img/homePage/blogSection/article2.jpg" class="w-100 object-fit-cover " alt="">
-              </div>
-              <div class="col-8 blog__container__aside__recentPosts__text ">
-                <p class="fs-6 fw-lighter m-0">Decembre 04 2023</p>
-                <h2 class="fs-6 m-0 blog__container__aside__recentPosts__text__title">Solution pour l'acné et les peaux sensibles</h2>
-              </div>
-            </div>
-            <div class="row p-2 blog__container__aside__recentPosts align-content-center ">
-              <div class="col-4 blog__container__aside__recentPosts__img">
-                <img src="assets/img/homePage/blogSection/article2.jpg" class="w-100 object-fit-cover " alt="">
-              </div>
-              <div class="col-8 blog__container__aside__recentPosts__text ">
-                <p class="fs-6 fw-lighter m-0">Decembre 04 2023</p>
-                <h2 class="fs-6 m-0 blog__container__aside__recentPosts__text__title">Solution pour l'acné et les peaux sensibles</h2>
-              </div>
-            </div>
-            <div class="row p-2 blog__container__aside__recentPosts align-content-center ">
-              <div class="col-4 blog__container__aside__recentPosts__img">
-                <img src="assets/img/homePage/blogSection/article2.jpg" class="w-100 object-fit-cover " alt="">
-              </div>
-              <div class="col-8 blog__container__aside__recentPosts__text ">
-                <p class="fs-6 fw-lighter m-0 ">Decembre 04 2023</p>
-                <h2 class="fs-6 m-0 blog__container__aside__recentPosts__text__title">Solution pour l'acné et les peaux sensibles</h2>
-              </div>
-            </div>
+            <?php } ?>
+            
           </div>
 </div>

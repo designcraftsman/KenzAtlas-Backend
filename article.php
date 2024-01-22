@@ -1,15 +1,24 @@
 <?php session_start(); ?>
 <?php 
     include('connection.php');
-    $idArticle = $_GET['idArticle']; 
+    $id = $_GET['idArticle']; 
+    $cookie= 'articleVue'.$id;
     $sqlQuery = "SELECT * FROM articles WHERE idArticle = :idArticle;";
     $articleStatement = $db->prepare($sqlQuery);
-    $articleStatement->bindParam('idArticle', $idArticle, PDO::PARAM_INT); 
+    $articleStatement->bindParam('idArticle', $id, PDO::PARAM_INT); 
     $articleStatement->execute();
     $article = $articleStatement->fetch(PDO::FETCH_ASSOC);
+    if(!isset($_COOKIE[$cookie])){
+        $Views = $article['vueArticle'] + 1;
+        $insertQuery = "UPDATE articles SET vueArticle = :vueArticle WHERE idArticle = :idArticle";
+        $insertView = $db->prepare($insertQuery);
+        $insertView ->execute([
+            'idArticle'=>$id,
+            'vueArticle'=>$Views,
+        ]);
+        setcookie($cookie,1,time()+3600*24*30);
+    }
     ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

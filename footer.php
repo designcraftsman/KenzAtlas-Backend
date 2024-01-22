@@ -8,7 +8,7 @@
             <ul class="list-unstyled text-center text-secondary  mt-4 ">
               <li class="d-inline m-2 "><a class="text-decoration-none socialLinks text-secondary " href="#"><i class="fa-brands fa-facebook fa-lg"></i></a></li>
               <li class="d-inline m-2 "><a class="text-decoration-none socialLinks text-secondary " href="#"><i class="fa-brands fa-instagram fa-lg"></i></a></li>
-              <li class="d-inline m-2"><a class="text-decoration-none socialLinks text-secondary " href="#"><i class="fa-brands fa-twitter fa-lg"></i></a></li>
+              <li class="d-inline m-2"><a class="text-decoration-none socialLinks text-secondary " href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a></li>
               <li class="d-inline m-2"><a class="text-decoration-none socialLinks text-secondary " href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a></li>
             </ul>
           </div>

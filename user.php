@@ -28,11 +28,14 @@
           'telephoneUtulisateur' => $telephoneUtulisateur,
           'idUtulisateur' => $_SESSION['idUtulisateur']
       ]);
+      $_SESSION['nomUtulisateur'] = $nomUtulisateur;
+      $_SESSION['prenomUtulisateur'] = $prenomUtulisateur;
+      $_SESSION['emailUtulisateur'] = $emailUtulisateur;
+      $_SESSION['dateNaissanceUtulisateur'] = $dateNaissanceUtulisateur;
+      $_SESSION['telephoneUtulisateur'] = $telephoneUtulisateur;
     }catch (PDOException $e) {
       echo 'An error occurred: ' . $e->getMessage();
   }
-  }else{
-    echo('Erreur de modification');
   }
 ?>
 <!DOCTYPE html>
@@ -73,7 +76,7 @@
             </div>
             <div class="col-lg-6 col-md-3 col-12 mt-3">
                 <label for="nom d-block">Telephone</label>
-                <input type="tel" name="telephoneUtulisateur" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" value="<?php echo($_SESSION['telephoneUtulisateur']); ?>"> 
+                <input type="tel" name="telephoneUtulisateur" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" value="<?php echo($_SESSION['telephoneUtulisateur']);?>"> 
             </div>
             <div class="col-lg-6 col-md-3 col-12 mt-3">
                 <label for="nom d-block">Adresse email</label>
@@ -84,61 +87,51 @@
             </div>
         </form>
         <hr class="border-primary border-3 mt-5">
-        <form class="row mt-5 ">
-        <h3 class="fw-light fs-5  "><i class="fa-solid fa-lock"></i> Mot de passe</h3>
-          <div class="row">
-            <div class="col-lg-6 col-md-3 col-12  mt-3">
-                <label for="nom d-block">Mot de passe actuel</label>
-                <input type="password" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" >
+        <form class="row mt-5 mb-5" method="POST">
+          <h3 class="fw-light fs-5  "><i class="fa-solid fa-lock"></i> Mot de passe</h3>
+            <div class="row">
+              <div class="col-lg-6 col-md-3 col-12  mt-3">
+                  <label for="nom d-block">Mot de passe actuel</label>
+                  <input type="password" name="motdepasseactuel" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" >
+              </div>
             </div>
-          </div>
-            <div class="col-lg-6 col-md-3 col-12 mt-3">
-                <label for="nom d-block">Nouveau mot de passe</label>
-                <input type="password" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1"  >
-            </div>
-            <div class="col-lg-6 col-md-3 col-12 mt-3">
-                <label for="nom d-block">Confirmer le nouveau mot de passe</label>
-                <input type="password" name="nom" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" >
-            </div>
-            <div class="col-12 mt-3">
-                <button type="submit" class="btn btn-primary text-secondary mt-2">Enregistrer les modifications</button>
-            </div>
+              <div class="col-lg-6 col-md-3 col-12 mt-3">
+                  <label for="nom d-block">Nouveau mot de passe</label>
+                  <input type="password" name="nouveaumotdepasse" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1"  >
+              </div>
+              <div class="col-lg-6 col-md-3 col-12 mt-3">
+                  <label for="nom d-block">Confirmer le nouveau mot de passe</label>
+                  <input type="password" name="confirmationmotdepasse" class="p-2 w-100 form-control mt-2 d-block rounded rounded-3 border-1" >
+              </div>
+              <div class="col-12 mt-3">
+                  <button type="submit" class="btn btn-primary text-secondary mt-2">Enregistrer les modifications</button>
+              </div>
         </form>
-
-        <hr class="border-primary border-3 mt-5">
-        <div class="row mt-5 mb-5">
-            <h2 class="fw-bold fs-4">Mes commandes</h2>
-            <table class="table mt-3">
-                <thead>
-                  <tr>
-                    <th scope="col">Numero de commande</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Commande</th>
-                    <th scope="col">Prix</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">5563</th>
-                    <td>1 janvier 2024</td>
-                    <td>ghassoul,savon beldi</td>
-                    <td>250dh</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5563</th>
-                    <td>1 janvier 2024</td>
-                    <td>ghassoul,savon beldi</td>
-                    <td>250dh</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5563</th>
-                    <td>1 janvier 2024</td>
-                    <td>ghassoul,savon beldi</td>
-                    <td>250dh</td>
-                    </tr>
-                </tbody>
-              </table>
-        </div>
+        <?php
+             if(isset($_POST['nouveaumotdepasse']) && isset($_POST['motdepasseactuel'])){
+              if (password_verify($_POST['motdepasseactuel'], $_SESSION['motdepasseUtulisateur'])) {
+              try{
+                include('connection.php');
+                $motdepasseUtulisateur = $_POST['nouveaumotdepasse'];
+                $motdepasseUtulisateur = password_hash($motdepasseUtulisateur, PASSWORD_DEFAULT);
+                $sqlQuery = 'UPDATE utulisateur 
+                SET motdepasseUtulisateur = :motdepasseUtulisateur
+                WHERE idUtulisateur = :idUtulisateur';
+                // Use prepared statements to prevent SQL injection
+                $updateData = $db->prepare($sqlQuery);
+                // Execute the query with the provided values
+                $updateData->execute([
+                  'motdepasseUtulisateur' => $motdepasseUtulisateur,
+                  'idUtulisateur' => $_SESSION['idUtulisateur']
+                ]);
+                }catch (PDOException $e) {
+                    echo 'An error occurred: ' . $e->getMessage();
+                }
+              }else{
+                echo('Mot de passe actuel incorrect');
+              }
+            }
+        ?>
     </div>
 
 
