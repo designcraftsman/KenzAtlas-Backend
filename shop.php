@@ -51,16 +51,16 @@
               Shampoing
             </li>
           </ul>
-          <h2 class=" fs-6 fw-semibold  mt-5 ">État du produit</h2>
+          <h2 class=" fs-6 fw-semibold  mt-5 ">Offres</h2>
           <hr class="border-primary border-2 shop__container__filterBar__hr">
           <ul class="list-group list-unstyled mt-2  ">
             <li class="mt-2 text-dark" fs-6>
-              <input class="form-check-input me-1" type="checkbox" value="promotion" aria-label="...">
-              Promotion
+              <input class="form-check-input me-1" type="checkbox" value="pack" >
+              Pack
             </li>
             <li class="mt-2 text-dark fs-6">
-              <input class="form-check-input me-1" type="checkbox" value="en stock " aria-label="...">
-              En stock
+              <input class="form-check-input me-1" type="checkbox" value="promotion" >
+              Promotion
             </li>
           </ul>
           <h2 class=" fs-6 fw-semibold  mt-5 ">Filtrer par prix</h2>
@@ -129,17 +129,17 @@
                             Shampoing
                           </li>
                         </ul>
-                        <h2 class=" fs-6 fw-semibold  mt-5 ">État du produit</h2>
+                        <h2 class=" fs-6 fw-semibold  mt-5 ">Offres</h2>
                         <hr class="border-primary border-2">
                         <ul class="list-group list-unstyled mt-2  ">
                           
                           <li class="mt-2 text-dark fs-6" >
                             <input class="form-check-input  me-1" type="checkbox" value="promotion" >
-                            Promotion
+                            Pack
                           </li>
                           <li class="mt-2 text-dark fs-6">
                             <input class="form-check-input me-1" type="checkbox" value="en stock" >
-                            En stock
+                            Promotion
                           </li>
                         </ul>
                         <h2 class=" fs-6 fw-semibold  mt-5 ">Filtrer par prix</h2>
@@ -180,8 +180,8 @@
                     </div>
                   <div class="card-body">
                     <div class="d-none shop__container__products__list__product__details d-none">
-                      <span class="shop__container__products__list__product__details__categorie">savon</span>
-                      <span class="shop__container__products__list__product__details__etat">promotion</span>
+                      <span class="shop__container__products__list__product__details__categorie"><?php echo($produit['categorieProduit']); ?></span>
+                      <span class="shop__container__products__list__product__details__etat"><?php echo('etatProduit'); ?></span>
                     </div>
                     <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price"><?php echo($produit['prixProduit']); ?></span>dh</p>
                     <p class="card-text text-center m-1 shop__container__products__list__product__title title"><?php echo($produit['nomProduit']); ?></p>

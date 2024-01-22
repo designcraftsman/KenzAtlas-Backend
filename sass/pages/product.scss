@@ -41,3 +41,37 @@
         opacity: 1;
     }
 }
+
+
+
+.stars-rating{
+    transform: scaleX(-1);
+}
+
+.star-widget input {
+    display: none;
+  }
+  
+  .star-widget label {
+    font-size: 20px;
+    color: #6a6a6a;
+    padding: 10px;
+    transition: all 0.2s ease;
+  }
+  
+  .star-widget input:not(:checked) ~ label:hover,
+  .star-widget input:not(:checked) ~ label:hover ~ label {
+    color: $style; /* Replace with your desired color */
+    transition: all 0.2s ease 0.2s; /* Add a delay to the transition for the right-to-left effect */
+  }
+  
+  .star-widget input:checked ~ label {
+    color: $style; /* Replace with your desired color */
+  }
+  
+  
+  
+  
+ 
+
+  

@@ -24,9 +24,6 @@
    <?php include('navbar.php'); ?>
 
 <!--navbar end-->
-
-
-
     <!-- product section start-->
 
     <div class="container productPage ">
@@ -167,6 +164,56 @@
         <section class="mt-5 p-3 ">
             <h2 class="text-center fw-bolder m-3 reveal">Avis Clients</h2>
             <div class="comments">
+            <h2 class="fs-5 fw-semibold reveal">Rédiger un avis :</h2>
+            <form method="POST" class="reveal">
+              <div class="star-widget mb-3 d-flex  align-items-center ">
+                  <span class="fs-6 fw-light">Noter le produit :</span>
+                  <div class="stars-rating d-flex justify-content-end ">
+                    <input type="radio" name="rate-5" id="rate-5" value="5">
+                    <label for="rate-5" class="fas fa-star"></label>
+                    <input type="radio" name="rate-4" id="rate-4" value="4">
+                    <label for="rate-4" class="fas fa-star"></label>
+                    <input type="radio" name="rate-3" id="rate-3" value="3">
+                    <label for="rate-3" class="fas fa-star"></label>
+                    <input type="radio" name="rate-2" id="rate-2" value="2">
+                    <label for="rate-2" class="fas fa-star"></label>
+                    <input type="radio" name="rate-1" id="rate-1" value="1">
+                    <label for="rate-1" class="fas fa-star"></label>
+                  </div>
+              </div>
+                  <div class="textarea mb-3">
+                    <textarea cols="30" rows="4" name="avisUtulisateur" class="form-control p-2 fs-6" placeholder="Votre avis"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary  text-secondary" >Publier un avis</button>
+            </form>
+            <?php
+                if ((isset($_POST['rate-5']) || isset($_POST['rate-4']) || isset($_POST['rate-3']) || isset($_POST['rate-2']) || isset($_POST['rate-1'])) && isset($_POST['avisUtulisateur'])) {
+                  try {
+                      // Establish a database connection (replace with your actual database configuration)
+                      include('connection.php');
+                      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                      $avisUtulisateur = $_POST['avisUtulisateur'];
+                      // Assuming you also want to handle user ratings
+                      $rating = isset($_POST['rate-5']) ? 5 :
+                                (isset($_POST['rate-4']) ? 4 :
+                                (isset($_POST['rate-3']) ? 3 :
+                                (isset($_POST['rate-2']) ? 2 :
+                                (isset($_POST['rate-1']) ? 1 : 0))));
+                      // Prepare the SQL query using placeholders
+                      $sqlQuery = "INSERT INTO avis ( nomUtulisateur, prenomUtulisateur, idProduit, commentaireAvis, notation)Values ( :nomUtulisateur, :prenomUtulisateur ,:idProduit, :commentaireAvis, :notation)";
+                      $insertData = $db->prepare($sqlQuery);
+                      $insertData->execute([
+                        'nomUtulisateur' => $_SESSION['nomUtulisateur'],
+                        'prenomUtulisateur' => $_SESSION['prenomUtulisateur'],
+                        'idProduit' => $id,
+                        'commentaireAvis' => $avisUtulisateur,
+                        'notation' => $rating,
+                    ]);
+                    } catch (PDOException $e) {
+                      echo 'An error occurred: ' . $e->getMessage();
+                  }
+              }
+            ?>
             <div class="comment mt-5 reveal">
                 <h1 class="fs-5 fw-bold">Fatiha <span class="m-2"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></span></h1>
                 <p class="fs-6 fw-light">A ne pas rater</p>
