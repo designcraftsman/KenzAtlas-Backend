@@ -1,10 +1,19 @@
 <?php session_start(); ?>
+<?php
+    include('connection.php');
+    $id = $_GET['idProduit']; 
+    $sqlQuery = "SELECT * FROM produit WHERE idProduit = :idProduit;";
+    $produitStatement = $db->prepare($sqlQuery);
+    $produitStatement->bindParam('idProduit', $id, PDO::PARAM_INT); 
+    $produitStatement->execute();
+    $produit = $produitStatement->fetch(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kenzAtlas</title>
+    <title><?php echo($produit['nomProduit']) ?></title>
     <link rel="icon" href="assets/img/logo/LOGO_2.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,13 +35,13 @@
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active productPage__container__imgContainer__img h-100">
-                    <img src="assets/img/homePage/featuredProducts/product4.jpg " class="object-fit-cover productPage__product__img d-block w-100 productPage__container__imgContainer__img__select " alt="...">
+                    <img src="<?php echo($produit['imageProduit1']) ?>" class="object-fit-cover productPage__product__img d-block w-100 productPage__container__imgContainer__img__select " alt="...">
                   </div>
                   <div class="carousel-item productPage__container__imgContainer__img h-100">
-                    <img src="assets/img/homePage/featuredProducts/product1.jpg" class="object-fit-cover d-block w-100 productPage__container__imgContainer__img__select " alt="...">
+                    <img src="<?php echo($produit['imageProduit2']) ?>" class="object-fit-cover d-block w-100 productPage__container__imgContainer__img__select " alt="...">
                   </div>
                   <div class="carousel-item productPage__container__imgContainer__img h-100">
-                    <img src="assets/img/homePage/featuredProducts/product3.jpg" class="object-fit-cover d-block w-100 productPage__container__imgContainer__img__select " alt="...">
+                    <img src="<?php echo($produit['imageProduit3']) ?>" class="object-fit-cover d-block w-100 productPage__container__imgContainer__img__select " alt="...">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -46,12 +55,15 @@
               </div>   
             </div>
             <div class="col-lg-5 col-12  productPage__product mt-5">
-                <h1 class="fw-normal fs-2 productPage__product__title">Huile pour cheveux</h1>
-                <p class="fw-lighter  fs-3 "><span class="productPage__product__price">64.00</span>dh</p>
+                <h1 class="fw-normal fs-2 productPage__product__title"><?php echo($produit['nomProduit']) ?></h1>
+                <p class="fw-lighter  fs-3 "><span class="productPage__product__price"><?php echo($produit['prixProduit']) ?></span>dh</p>
                 <span class="d-none productPage__product__id">5536</span>
-                <p><span class="m-2 ms-0"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></span> | <span class="m-2">3 reviews </span></p>
-                <p class="fw-lighter fs-5">Niacinamide and Vitamin C are two anti-aging superstars but not usually formulated together because of their different pH levels.
-                </p>
+                <p><span class="m-2 ms-0">
+                  <?php for( $i=0 ; $i < $produit['moyenneNotation']; $i++){ ?>
+                  <i class="fa-solid fa-star fa-xs text-primary m-1"></i>
+                  <?php } ?>
+                </span> | <span class="m-2">3 reviews </span></p>
+                <p class="fw-lighter fs-5"><?php echo($produit['sousTitreProduit']); ?></p>
                 <div class="d-flex justify-content-between align-items-center p-2 ">
                     <p class="w-50 fs-6">Quantité : <input class="w-50 rounded border-1 text-center fw-bolder productPage__product__quantity " min="1" max="10" value="1" type="number"></input></p>
                     <i class="fa-brands fa-square-whatsapp  fa-2xl fs-1  " style="color: #43ce1c;"></i>
@@ -61,18 +73,11 @@
         </div>
         <section class="mt-5" >
             <h2 class="fs-2 fw-bolder text-center p-2 reveal">Détails du Produit</h2>
-            <p class=" fs-6 fw-light m-3 p-2 reveal">
-                For Normal, Oily, Combination Skin Types
-                Complexion-perfecting natural foundation enriched with antioxidant-packed superfruits, vitamins, and other skin-nourishing nutrients. Creamy liquid formula sets with a pristine matte finish for soft, velvety smooth skin.
-                Say hello to flawless, long-lasting foundation that comes in 7 melt-into-your-skin shades. This lightweight, innovative formula creates a smooth, natural matte finish that won’t settle into lines. It’s the perfect fit for your skin. 1 fl. oz.</p>
+            <p class=" fs-6 fw-light m-3 p-2 reveal"><?php echo($produit['descriptionProduit']); ?></p>
         </section>
         <section class="mt-5">
             <h2 class="fs-2 fw-bolder text-center m-3 reveal">Ingrédients</h2>
-            <p class="fs-6 fw-light m-3 p-2 reveal">
-                -Nannochloropsis Oculata (micro algae) extract, pullulan.<br>
-                -Nannochloropsis Oculata (micro algae) extract, pullulan, water, ethanol.<br>
-                -Yellow to amber, viscous liquid.
-                </p>
+            <p class="fs-6 fw-light m-3 p-2 reveal"><?php echo($produit['ingredientsProduit']); ?></p>
         </section>
 
 

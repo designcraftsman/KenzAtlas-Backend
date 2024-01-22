@@ -424,8 +424,9 @@ html {
   transform-origin: left;
   animation-fill-mode: both;
 }
-.shop__container__products__list__product__img {
-  height: 450px;
+.shop__container__products__list__product__imgContainer__img {
+  height: 400px;
+  object-fit: cover;
 }
 
 .ProductsImageContainers {
@@ -448,6 +449,7 @@ html {
   opacity: 1;
 }
 .ProductsImageContainers .ProductsImages {
+  height: 400px;
   transform: scale(1);
   transition: all 500ms;
 }

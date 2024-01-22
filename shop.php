@@ -173,7 +173,7 @@
               <?php foreach ($produits as $produit){ ?>
               <div class="col-lg-5 col-md-6 col-10 m-auto product   mt-4 shop__container__products__list__product">
                 <div class="card border-0  m-auto w-100" >
-                  <a href="product.html" class="text-decoration-none text-dark">
+                  <a href="product" class="text-decoration-none text-dark">
                     <div class="ProductsImageContainers">
                       <img src="<?php echo($produit['imageProduit1']); ?>" class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
                       <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
@@ -185,165 +185,15 @@
                     </div>
                     <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price"><?php echo($produit['prixProduit']); ?></span>dh</p>
                     <p class="card-text text-center m-1 shop__container__products__list__product__title title"><?php echo($produit['nomProduit']); ?></p>
+                    <p class="shop__container__products__list__product__id"><?php echo($produit['idProduit']); ?></p>
                     <p class="card-text text-center m-1">
-                      <?php for ($i=0; $i < $produit['moyenneNotation']; $i++) {?>
-                      <i class="fa-solid fa-star fa-xs text-primary "></i>
-                      <?php }?>
+                    <p class="shop__container__products__list__product__moyenneNotation"><?php echo($produit['moyenneNotation']); ?></p>
                     <span>52 Reviews</span></p>
                   </div>
                   </a>
                 </div>
               </div>
               <?php }?>
-              <div class="col-lg-5 col-md-6 col-10 m-auto product   mt-4 shop__container__products__list__product">
-                <div class="card border-0  m-auto w-100" >
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div class="ProductsImageContainers">
-                      <img src="assets/img/homePage/featuredProducts/product1.jpg" class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
-                      <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-                    </div>
-                  <div class="card-body">
-                    <div class="d-none shop__container__products__list__product__details d-none">
-                      <span class="shop__container__products__list__product__details__categorie">soin cheveux</span>
-                      <span class="shop__container__products__list__product__details__etat">promotion</span>
-                    </div>
-                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                    <p class="card-text text-center m-1 shop__container__products__list__product__title title">Parfum</p>
-                    <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i>  <span>52 Reviews</span></p>
-                  </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-5 col-md-6 col-10 m-auto product   mt-4 shop__container__products__list__product">
-                <div class="card border-0  m-auto w-100" >
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div class="ProductsImageContainers">
-                      <img src="assets/img/homePage/featuredProducts/product2.jpg" class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
-                      <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-                    </div>
-                  <div class="card-body">
-                    <div class="d-none shop__container__products__list__product__details d-none">
-                      <span class="shop__container__products__list__product__details__categorie">gommage</span>
-                      <span class="shop__container__products__list__product__details__etat">promotion</span>
-                    </div>
-                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">80.00</span>dh</p>
-                    <p class="card-text text-center m-1 shop__container__products__list__product__title title">Parfum</p>
-                    <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i>  <span>52 Reviews</span></p>
-                  </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-5 col-md-6 col-10 m-auto product   mt-4 shop__container__products__list__product">
-                <div class="card border-0  m-auto w-100" >
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div class="ProductsImageContainers">
-                      <img src="assets/img/homePage/featuredProducts/product3.jpg" class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
-                      <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-                    </div>
-                  <div class="card-body">
-                    <div class="d-none shop__container__products__list__product__details d-none">
-                      <span class="shop__container__products__list__product__details__categorie">savon</span>
-                      <span class="shop__container__products__list__product__details__etat">promotion</span>
-                    </div>
-                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">25.00</span>dh</p>
-                    <p class="card-text text-center m-1 shop__container__products__list__product__title title">Parfum</p>
-                    <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i>  <span>52 Reviews</span></p>
-                  </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-5 col-md-6 col-10 m-auto product   mt-4 shop__container__products__list__product">
-                <div class="card border-0  m-auto w-100" >
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div class="ProductsImageContainers">
-                      <img src="assets/img/homePage/featuredProducts/product4.jpg" class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
-                      <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-                    </div>
-                  <div class="card-body">
-                    <div class="d-none shop__container__products__list__product__details d-none">
-                      <span class="shop__container__products__list__product__details__categorie">huile</span>
-                      <span class="shop__container__products__list__product__details__etat">promotion</span>
-                    </div>
-                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">150.00</span>dh</p>
-                    <p class="card-text text-center m-1 shop__container__products__list__product__title title">Parfum</p>
-                    <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i>  <span>52 Reviews</span></p>
-                  </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-5 col-md-6 col-10 m-auto product   mt-4 shop__container__products__list__product">
-                <div class="card border-0  m-auto w-100" >
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div class="ProductsImageContainers">
-                      <img src="assets/img/homePage/featuredProducts/product5.jpg" class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
-                      <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-                    </div>
-                  <div class="card-body">
-                    <div class="d-none shop__container__products__list__product__details d-none">
-                      <span class="shop__container__products__list__product__details__categorie">savon</span>
-                      <span class="shop__container__products__list__product__details__etat">promotion</span>
-                    </div>
-                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                    <p class="card-text text-center m-1 shop__container__products__list__product__title title">Parfum</p>
-                    <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i>  <span>52 Reviews</span></p>
-                  </div>
-                  </a>
-                </div>
-              </div>
-            <div class="col-lg-5 col-md-6 col-10 m-auto product   mt-4 shop__container__products__list__product">
-              <div class="card border-0  m-auto w-100" >
-                <a href="product.html" class="text-decoration-none text-dark">
-                  <div class="ProductsImageContainers">
-                    <img src="assets/img/homePage/featuredProducts/product6.jpg" class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
-                    <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-                  </div>
-                <div class="card-body">
-                  <div class="d-none shop__container__products__list__product__details d-none">
-                    <span class="shop__container__products__list__product__details__categorie">soin cheveux</span>
-                    <span class="shop__container__products__list__product__details__etat">promotion</span>
-                  </div>
-                  <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                  <p class="card-text text-center m-1 shop__container__products__list__product__title title">Parfum</p>
-                  <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i>  <span>52 Reviews</span></p>
-                </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-5 col-md-6 col-10 mt-2 ">
-              <div class="card border-0 m-auto w-100 ProductsCards" >
-                <a href="product.html" class="text-decoration-none text-dark">
-                <div class="ProductsImageContainers">
-                  <img src="assets/img/homePage/featuredProducts/product7.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-                  <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-                </div>
-                <div class="card-body">
-                  <div class=" d-none">
-                    <span class="shop__container__products__list__product__details__categorie">huile</span>
-                    <span class="shop__container__products__list__product__details__etat">promotion</span>
-                  </div>
-                  <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                  <p class="card-text text-center m-1">Gel Douch</p>
-                  <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
-                </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-5 col-md-6 m-auto product   col-10 mt-4 shop__container__products__list__product">
-              <div class="card border-0  m-auto w-100" >
-                <a href="product.html" class="text-decoration-none text-dark">
-                <img src="assets/img/homePage/featuredProducts/product8.jpg" class="card-img-top shop__container__products__list__product__img object-fit-cover " alt="...">
-                <div class="card-body">
-                  <div class="d-none shop__container__products__list__product__details d-none">
-                    <span class="shop__container__products__list__product__details__categorie">shampoing</span>
-                    <span class="shop__container__products__list__product__details__etat">en stock</span>
-                  </div>
-                  <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">270.00</span>dh</p>
-                  <p class="card-text text-center m-1 shop__container__products__list__product__title title">Shampoing</p>
-                  <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary "></i>  <span>52 Reviews</span></p>
-                </div>
-                </a>
-              </div>
-            </div>
             </div>
             
           </div>

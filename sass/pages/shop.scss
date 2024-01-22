@@ -70,8 +70,11 @@
                     animation-delay: 600ms; 
                     transform-origin: left;
                     animation-fill-mode: both;
-                    &__img{
-                        height: 450px;
+                    &__imgContainer{
+                        &__img{
+                            height: 400px;
+                            object-fit: cover;
+                        }
                     }
             }
             }
@@ -102,6 +105,7 @@
         opacity: 1;
     }
     .ProductsImages {
+        height: 400px;
         transform: scale(1);
         transition: all 500ms;
         
