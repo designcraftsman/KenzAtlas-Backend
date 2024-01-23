@@ -164,9 +164,10 @@
         <section class="mt-5 p-3 ">
             <h2 class="text-center fw-bolder m-3 reveal">Avis Clients</h2>
             <div class="comments">
+            <?php if(isset($_SESSION['nomUtulisateur'])){ ?>
             <h2 class="fs-5 fw-semibold reveal">Rédiger un avis :</h2>
             <form method="POST" class="reveal">
-              <div class="star-widget mb-3 d-flex  align-items-center ">
+              <div class="star-widget mb-3 d-flex  align-items-center flex-wrap">
                   <span class="fs-6 fw-light">Noter le produit :</span>
                   <div class="stars-rating d-flex justify-content-end ">
                     <input type="radio" name="rate-5" id="rate-5" value="5">
@@ -186,6 +187,7 @@
                   </div>
                   <button type="submit" class="btn btn-primary  text-secondary" >Publier un avis</button>
             </form>
+            <?php } ?>
             <?php
                 if ((isset($_POST['rate-5']) || isset($_POST['rate-4']) || isset($_POST['rate-3']) || isset($_POST['rate-2']) || isset($_POST['rate-1'])) && isset($_POST['avisUtulisateur'])) {
                   try {
@@ -213,27 +215,25 @@
                       echo 'An error occurred: ' . $e->getMessage();
                   }
               }
+              $sqlQuery = 'SELECT * FROM avis where idProduit = :idProduit ORDER BY `avis`.`dateAvis` DESC';
+              $avisStatement = $db->prepare($sqlQuery);
+              $avisStatement->bindParam(':idProduit', $id, PDO::PARAM_STR);
+              $avisStatement->execute();
+              $avisGroupe = $avisStatement->fetchAll(PDO::FETCH_ASSOC);
+              foreach ($avisGroupe as $avis) {
             ?>
-            <div class="comment mt-5 reveal">
-                <h1 class="fs-5 fw-bold">Fatiha <span class="m-2"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></span></h1>
-                <p class="fs-6 fw-light">A ne pas rater</p>
-                <p class="fs-6 fw-lighter">24 Decembre 2023</p>
+            <div class="comment mt-5 ">
+                <h2 class="fs-5 fw-bold"><?php echo($avis['prenomUtulisateur']) ?><span class="m-2">
+                  <?php for($i=0 ; $i < $avis['notation'] ; $i++  ){ ?>
+                  <i class="fa-solid fa-star fa-xs text-primary m-1"></i>
+                  <?php } ?>
+                </span></h1>
+                <p class="fs-6 fw-light"><?php echo($avis['commentaireAvis']); ?></p>
+                <p class="fs-6 fw-lighter"><?php echo($avis['dateAvis']); ?></p>
                 <hr class="border-primary border-3">
             </div>
-            <div class="comment mt-5 reveal">
-                <h1 class="fs-5 fw-bold">Fatiha <span class="m-2"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></span></h1>
-                <p class="fs-6 fw-light">A ne pas rater</p>
-                <p class="fs-6 fw-lighter">24 Decembre 2023</p>
-                <hr class="border-primary border-3">
+            <?php } ?>
             </div>
-            <div class="comment mt-5 reveal">
-                <h1 class="fs-5 fw-bold">Fatiha <span class="m-2"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></span></h1>
-                <p class="fs-6 fw-light">A ne pas rater</p>
-                <p class="fs-6 fw-lighter">24 Decembre 2023</p>
-                <hr class="border-primary border-3">
-            </div>
-            </div>
-
         </section>
     </div>
 

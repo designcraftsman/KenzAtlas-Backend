@@ -31,8 +31,8 @@
           <hr class="border-primary border-2 shop__container__filterBar__hr">
           <ul class="list-group list-unstyled mt-2 shop__container__filterBar__list  ">
             <li class="mt-2 text-dark fs-6">
-              <input class="form-check-input me-1" type="checkbox" value="soin cheveux" aria-label="...">
-              Soin cheveux
+              <input class="form-check-input me-1" type="checkbox" value="cheveux" aria-label="...">
+              Cheveux
             </li>
             <li class="mt-2 text-dark fs-6 ">
               <input class="form-check-input me-1" type="checkbox" value="gommage" aria-label="...">
@@ -46,21 +46,13 @@
               <input class="form-check-input me-1" type="checkbox" value="huile" aria-label="...">
               Huile
             </li>
-            <li class="mt-2 text-dark fs-6">
-              <input class="form-check-input me-1" type="checkbox" value="shampoing" aria-label="...">
-              Shampoing
-            </li>
           </ul>
           <h2 class=" fs-6 fw-semibold  mt-5 ">Offres</h2>
           <hr class="border-primary border-2 shop__container__filterBar__hr">
           <ul class="list-group list-unstyled mt-2  ">
             <li class="mt-2 text-dark" fs-6>
-              <input class="form-check-input me-1" type="checkbox" value="pack" >
-              Pack
-            </li>
-            <li class="mt-2 text-dark fs-6">
-              <input class="form-check-input me-1" type="checkbox" value="promotion" >
-              Promotion
+              <input class="form-check-input me-1" type="checkbox" value="pack promo" >
+              Pack promo
             </li>
           </ul>
           <h2 class=" fs-6 fw-semibold  mt-5 ">Filtrer par prix</h2>
@@ -109,8 +101,8 @@
                         <hr class="border-primary border-2">
                         <ul class="list-group list-unstyled mt-2 shop__container__filterBar__list  ">
                           <li class="mt-2 text-dark fs-6">
-                            <input class="form-check-input  me-1" type="checkbox" id="hairCheckbox" value="soin cheveux" >
-                            Soin cheveux
+                            <input class="form-check-input  me-1" type="checkbox" id="hairCheckbox" value="Cheveux" >
+                            Cheveux
                           </li>
                           <li class="mt-2 text-dark fs-6 ">
                             <input class="form-check-input  me-1" type="checkbox" value="gommage" >
@@ -124,22 +116,14 @@
                             <input class="form-check-input me-1" type="checkbox" value="huile" >
                             Huile
                           </li>
-                          <li class="mt-2 text-dark fs-6">
-                            <input class="form-check-input me-1" type="checkbox" value="shampoing" >
-                            Shampoing
-                          </li>
                         </ul>
                         <h2 class=" fs-6 fw-semibold  mt-5 ">Offres</h2>
                         <hr class="border-primary border-2">
                         <ul class="list-group list-unstyled mt-2  ">
                           
                           <li class="mt-2 text-dark fs-6" >
-                            <input class="form-check-input  me-1" type="checkbox" value="promotion" >
-                            Pack
-                          </li>
-                          <li class="mt-2 text-dark fs-6">
-                            <input class="form-check-input me-1" type="checkbox" value="en stock" >
-                            Promotion
+                            <input class="form-check-input  me-1" type="checkbox" value="pack promo" >
+                            Pack promo
                           </li>
                         </ul>
                         <h2 class=" fs-6 fw-semibold  mt-5 ">Filtrer par prix</h2>
