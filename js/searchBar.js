@@ -11,6 +11,14 @@ function filterProducts(event) {
 }
 
 
+const registerLoginBtns = document.querySelectorAll('registerLoginBtns');
+
+registerLoginBtns.forEach((btn)=>{
+    btn.addEventListener(('click'),($event)=>{
+        $event.preventDefault();
+    });
+});
+
 
 
 document.addEventListener('DOMContentLoaded', function () {

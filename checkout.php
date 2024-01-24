@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start();
+  if(!isset($_SESSION['nomUtulisateur'])){
+    header('Location: cart');
+    exit();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,5 +97,6 @@
   <script src="js/scrollReveal.js"></script>
   <script src="js/checkout.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="js/searchBar.js"></script></body>
+  <script src="js/searchBar.js"></script>
+</body>
   </html>

@@ -46,7 +46,11 @@
                     <p class="fs-6 fw-bold m-0 p-0"><span id="cartTotalCost" class="fw-bold">0 </span> dh</p>
                 </div>
                 <hr class="border-1 border-primary ">
+                <?php if(isset($_SESSION['idUtulisateur'])){ ?>
                 <button id="cartConfirmBtn" class="btn btn-primary btn-lg text-secondary w-100 mt-3">Commander</button>
+                <?php }else{ ?>
+                  <button  data-bs-toggle="modal" data-bs-target="#login" class="btn btn-primary btn-lg text-secondary w-100 mt-3">Commander</button>
+                  <?php } ?>
             </div>
         </div>
     </div>

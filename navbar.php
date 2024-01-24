@@ -1,43 +1,4 @@
-<?php 
-                if (isset($_POST['emailUtulisateur']) && isset($_POST['motdepasseUtulisateur'])) {
-                    try {
-                        // Establish a database connection (replace with your actual database configuration)
-                        include('connection.php');
-                        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $emailUtulisateur = $_POST['emailUtulisateur'];
-                        $motdepasseUtulisateur = $_POST['motdepasseUtulisateur'];
-                        // Prepare the SQL query using placeholders
-                        $sqlQuery = 'SELECT * from utulisateur WHERE emailUtulisateur = :email';
-                        $stmt = $db->prepare($sqlQuery);
-                        $stmt->execute([
-                            'email' => $emailUtulisateur,
-                        ]);
 
-                        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                        // Check if a user with the given email exists
-                        if ($user) {
-                            // Verify the hashed password
-                            if (password_verify($motdepasseUtulisateur, $user['motdepasseUtulisateur'])) {
-                                $_SESSION['idUtulisateur'] = $user['idUtulisateur'];	
-                                $_SESSION['nomUtulisateur'] = $user['nomUtulisateur'];
-                                $_SESSION['prenomUtulisateur'] = $user['prenomUtulisateur'];
-                                $_SESSION['emailUtulisateur'] = $user['emailUtulisateur'];
-                                $_SESSION['telephoneUtulisateur'] = $user['telephoneUtulisateur'];
-                                $_SESSION['dateNaissanceUtulisateur'] = $user['dateNaissanceUtulisateur'];
-                                $_SESSION['motdepasseUtulisateur'] = $user['motdepasseUtulisateur'];
-                            } else {
-                                echo 'Mote de passe incorrect.';
-                            }
-                        } else {
-                            echo 'Aucun compte trouvé.';
-                        }
-                    } catch (PDOException $e) {
-                        echo 'An error occurred: ' . $e->getMessage();
-                    }
-                }
-            ?> 
- 
  <!--navbar debut-->
  <nav class="navbar navbar-light bg-primary sticky-top  p-0 m-0  ">
         <div class="container-fluid navbar__container m-0 p-0">
@@ -175,10 +136,49 @@
             </div>
           </div>
           <div class="modal-body">
+          <?php 
+                if (isset($_POST['emailUtulisateur']) && isset($_POST['motdepasseUtulisateur'])) {
+                    try {
+                        // Establish a database connection (replace with your actual database configuration)
+                        include('connection.php');
+                        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $emailUtulisateur = $_POST['emailUtulisateur'];
+                        $motdepasseUtulisateur = $_POST['motdepasseUtulisateur'];
+                        // Prepare the SQL query using placeholders
+                        $sqlQuery = 'SELECT * from utulisateur WHERE emailUtulisateur = :email';
+                        $stmt = $db->prepare($sqlQuery);
+                        $stmt->execute([
+                            'email' => $emailUtulisateur,
+                        ]);
+
+                        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        // Check if a user with the given email exists
+                        if ($user) {
+                            // Verify the hashed password
+                            if (password_verify($motdepasseUtulisateur, $user['motdepasseUtulisateur'])) {
+                                $_SESSION['idUtulisateur'] = $user['idUtulisateur'];	
+                                $_SESSION['nomUtulisateur'] = $user['nomUtulisateur'];
+                                $_SESSION['prenomUtulisateur'] = $user['prenomUtulisateur'];
+                                $_SESSION['emailUtulisateur'] = $user['emailUtulisateur'];
+                                $_SESSION['telephoneUtulisateur'] = $user['telephoneUtulisateur'];
+                                $_SESSION['dateNaissanceUtulisateur'] = $user['dateNaissanceUtulisateur'];
+                                $_SESSION['motdepasseUtulisateur'] = $user['motdepasseUtulisateur'];
+                            } else {
+                                echo '<span class="text-danger text-center fs-5">Mote de passe incorrect.</span>';
+                            }
+                        } else {
+                            echo 'Aucun compte trouvé.';
+                        }
+                    } catch (PDOException $e) {
+                        echo 'An error occurred: ' . $e->getMessage();
+                    }
+                }
+            ?> 
             <form method="POST">
                 <input type="email" class="p-2 w-100 m-auto mt-3 fs-5 border-3 rounded form-control  " name="emailUtulisateur" placeholder="Email" >
                 <input type="password" class="p-2 w-100 m-auto mt-3 fs-5 border-3  rounded  form-control "name="motdepasseUtulisateur" placeholder="Mot de passe" >
-                <button type="submit" class="btn btn-primary w-100 m-auto  mt-3 text-secondary fs-5 border-0 rounded fw-bolder ">Se connecter</button>
+                <button type="submit" class=" btn btn-primary w-100 m-auto registerLoginBtns mt-3 text-secondary fs-5 border-0 rounded fw-bolder ">Se connecter</button>
             </form>
             <p class="text-center fs-6 mt-4">Vous n'avez pas un compte? <a type="button" class="text-primary " data-bs-target="#Register" data-bs-toggle="modal" data-bs-dismiss="modal">Créer un compte.</a></p>
          </div>
@@ -205,7 +205,7 @@
                   J'ai lu et j'accepte <a href="terms-conditions"> les termes et les conditions d'utulisations</a>.
                 </label>
               </div>
-              <button type="submit" class=" btn btn-primary w-100 m-auto  mt-3 text-secondary fs-5 border-0 rounded fw-bolder ">Créer compte</button>
+              <button type="submit" class=" btn btn-primary w-100 m-auto registerLoginBtns  mt-3 text-secondary fs-5 border-0 rounded fw-bolder ">Créer compte</button>
           </form>
           <p class="text-center fs-6 mt-4">Vous avez déjà un compte? <a class="text-primary " type="button" data-bs-target="#login" data-bs-toggle="modal" data-bs-dismiss="modal">Se connecter</a></p>
           <?php

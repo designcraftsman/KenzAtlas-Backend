@@ -56,3 +56,5 @@ const jsonString = JSON.stringify(orderRecapProducts);
 
 // Set a cookie with the JSON string
 document.cookie = "cartProducts=" + encodeURIComponent(jsonString) + "; path=/";
+
+

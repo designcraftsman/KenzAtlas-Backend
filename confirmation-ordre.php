@@ -1,17 +1,14 @@
 <?php
+error_reporting(E_ALL);
+if(!isset($_POST['nomClient']) || !isset($_POST['prenomClient']) || !isset($_POST['adresseClient']) || !isset($_POST['villeClient']) || !isset($_POST['codePostalClient']) || !isset($_POST['telephoneClient'])){
+    header('Location: index');
+    exit();
+}else{
     session_start();
     $cookieValue = $_COOKIE['cartProducts'];
-
     // Decode the JSON string to get the array
     $orderRecapProducts = json_decode(urldecode($cookieValue), true);
-
     // Now $orderRecapProducts contains the array from the cookie
-    for ($i = 0; $i < count($orderRecapProducts); $i++) {
-        echo($orderRecapProducts[$i]['id']);
-        echo($orderRecapProducts[$i]['quantity']);
-    }
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve form data
         $nomClient = $_POST["nomClient"];
         $prenomClient = $_POST["prenomClient"];
@@ -47,7 +44,8 @@
         $sqlQueryProducts = "INSERT INTO `produitscommandés` (`numeroCommande`, `idProduit`, `quantiteCommandés`) VALUES ('$numeroCommande', '$id', '$quantite');";
         $db->exec($sqlQueryProducts);
         }
-    }
+        header("Location: thank-you.php");
+}
 ?>
 
 
