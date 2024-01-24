@@ -29,7 +29,13 @@ document.addEventListener('DOMContentLoaded', function () {
         updateCartCount(existingCartProducts);
         // Store the updated cart state back in localStorage
         localStorage.setItem('cartProducts', JSON.stringify(existingCartProducts));
+            
+
+
+
         location.reload();
+
+
     });
 });
 

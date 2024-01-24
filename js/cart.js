@@ -54,6 +54,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         updateCartCount(cartProducts);
         });}
+        function updateCartProductsCookie() {
+          const orderRecapProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+          const jsonString = JSON.stringify(orderRecapProducts);
+          document.cookie = "cartProducts=" + encodeURIComponent(jsonString) + "; path=/";
+      }
+      
+      // Example: Modifying the array and updating the cookie
+      updateCartProductsCookie();
         function updateCartCount(products) {
           const totalCount = products.reduce((sum, product) => sum + parseInt(product.quantity), 0);
           localStorage.setItem('cartCount', totalCount.toString());
@@ -77,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const cartConfirm = document.getElementById('cartConfirmBtn');
 
         cartConfirm.addEventListener('click', () => {
-          window.location.href = 'checkout.html';
+          window.location.href = 'checkout';
         });
 
 

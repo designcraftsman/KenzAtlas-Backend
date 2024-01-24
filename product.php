@@ -54,7 +54,7 @@
             <div class="col-lg-5 col-12  productPage__product mt-5">
                 <h1 class="fw-normal fs-2 productPage__product__title"><?php echo($produit['nomProduit']) ?></h1>
                 <p class="fw-lighter  fs-3 "><span class="productPage__product__price"><?php echo($produit['prixProduit']) ?></span>dh</p>
-                <span class="d-none productPage__product__id">5536</span>
+                <span class="d-none productPage__product__id"><?php echo($produit['idProduit']); ?></span>
                 <p><span class="m-2 ms-0">
                   <?php for( $i=0 ; $i < $produit['moyenneNotation']; $i++){ ?>
                   <i class="fa-solid fa-star fa-xs text-primary m-1"></i>

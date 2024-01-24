@@ -1,7 +1,16 @@
-document.addEventListener('DOMContentLoaded', function () {   
-    const orderRecapProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
-    const orderRecap = document.querySelector('.orderRecapProducts');
-    orderRecapProducts.forEach((product, index) => {
+
+
+document.addEventListener('DOMContentLoaded', function () { 
+        // Retrieve cart count from localStorage
+        const cartCount = localStorage.getItem('cartCount') || 0;
+        const cartIcons = document.querySelectorAll('#cartIcon');
+        // Update the cart icon with the retrieved count
+        cartIcons.forEach(icon => {
+            icon.textContent = cartCount;
+          });
+        const orderRecapProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+        const orderRecap = document.querySelector('.orderRecapProducts');
+        orderRecapProducts.forEach((product, index) => {
         // Create and append elements for each product in the cart
         const productElement = document.createElement('div');
         productElement.classList.add('row', 'mt-3', 'align-items-center', 'cartProducts__product');
@@ -21,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
         orderRecap.appendChild(productElement);
        });
-
       updateTotalCost(orderRecapProducts);
       function updateTotalCost(products){
         const totalCost = products.reduce((sum, product) => sum + parseInt(product.totalCost), 0);
@@ -29,4 +37,22 @@ document.addEventListener('DOMContentLoaded', function () {
         var cartTotalCost = document.getElementById('totalCost');
         cartTotalCost.textContent=totalCost.toString();
       }
+      function updateCartProductsCookie() {
+        const orderRecapProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+        const jsonString = JSON.stringify(orderRecapProducts);
+        document.cookie = "cartProducts=" + encodeURIComponent(jsonString) + "; path=/";
+    }
+    
+    // Example: Modifying the array and updating the cookie
+    updateCartProductsCookie();
+
 });
+
+
+const orderRecapProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+
+// Convert the array to a JSON string
+const jsonString = JSON.stringify(orderRecapProducts);
+
+// Set a cookie with the JSON string
+document.cookie = "cartProducts=" + encodeURIComponent(jsonString) + "; path=/";
