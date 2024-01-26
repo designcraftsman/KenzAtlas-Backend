@@ -11,17 +11,19 @@ function filterProducts(event) {
 }
 
 
-const registerLoginBtns = document.querySelectorAll('registerLoginBtns');
 
-registerLoginBtns.forEach((btn)=>{
-    btn.addEventListener(('click'),($event)=>{
-        $event.preventDefault();
-    });
-});
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    const registerLoginBtns = document.querySelectorAll('registerLoginBtns');
+
+    registerLoginBtns.forEach((btn)=>{
+        btn.addEventListener(('click'),($event)=>{
+            $event.preventDefault();
+        });
+    });
     // Retrieve the search query parameter from the URL
     var searchParams = new URLSearchParams(window.location.search);
     var searchTerm = searchParams.get('search');
@@ -39,5 +41,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
 
 

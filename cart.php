@@ -1,4 +1,11 @@
 <?php session_start(); ?>
+<?php
+    include('connection.php');
+    $sqlQuery = 'SELECT * FROM `produit` ORDER BY `produit`.`moyenneNotation` DESC LIMIT 4';
+    $produitsVedetteStatement = $db->prepare($sqlQuery);
+    $produitsVedetteStatement->execute();
+    $produitsVedette = $produitsVedetteStatement->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,84 +70,33 @@
 
     <section class="mt-5 container mb-5">
         <h2 class="text-center fw-bolder m-3">Vous pourriez aimer</h2>
-        <div class="row d-flex justify-content-center align-content-center  mt-5  ">
-          <div class="col-lg-3 col-md-6 col-10 mt-2 ">
-            <div class="card border-0 m-auto w-100 ProductsCards" >
-              <a href="product.html" class="text-decoration-none text-dark">
-              <div class="ProductsImageContainers">
-                <img src="assets/img/homePage/featuredProducts/product4.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-                <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-              </div>
-              <div class="card-body">
-                <div class=" d-none">
-                  <span class="shop__container__products__list__product__details__categorie">savon</span>
-                  <span class="shop__container__products__list__product__details__etat">promotion</span>
+        <div class="row d-flex justify-content-center align-content-center  mt-5 ">
+              <?php foreach($produitsVedette as $produitVedette){ ?>
+              <div class="col-lg-3 col-md-6 col-10 mt-2 ">
+                <div class="card border-0 m-auto w-100 ProductsCards" >
+                  <a href="product?idProduit=<?php echo($produitVedette['idProduit']); ?>" class="text-decoration-none text-dark">
+                  <div class="ProductsImageContainers">
+                    <img src="<?php echo($produitVedette['imageProduit1']); ?>" class="img-fluid card-img-top ProductsImages" alt="...">
+                    <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
+                  </div>
+                  <div class="card-body">
+                    <div class=" d-none">
+                      <span class="shop__container__products__list__product__details__categorie"><?php echo($produitVedette['categorieProduit']); ?></span>
+                      <span class="shop__container__products__list__product__details__etat"><?php echo($produitVedette['etatProduit']); ?></span>
+                    </div>
+                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price"><?php echo($produitVedette['prixProduit']); ?></span>dh</p>
+                    <p class="card-text text-center m-1"><?php echo($produitVedette['nomProduit']); ?></p>
+                    <p class="card-text text-center m-1">
+                        <?php for($i=0 ; $i < $produitVedette['moyenneNotation']; $i++){ ?>
+                            <i class="fa-solid fa-star fa-xs text-primary m-1"></i>
+                        <?php } ?>
+                    </p>
+                  </div>
+                  </a>
                 </div>
-                <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                <p class="card-text text-center m-1">Gel Douch</p>
-                <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
               </div>
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-10 mt-2 ">
-            <div class="card border-0 m-auto w-100 ProductsCards" >
-              <a href="product.html" class="text-decoration-none text-dark">
-              <div class="ProductsImageContainers">
-                <img src="assets/img/homePage/featuredProducts/product1.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-                <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
+              <?php } ?>
               </div>
-              <div class="card-body">
-                <div class=" d-none">
-                  <span class="shop__container__products__list__product__details__categorie">savon</span>
-                  <span class="shop__container__products__list__product__details__etat">promotion</span>
-                </div>
-                <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                <p class="card-text text-center m-1">Gel Douch</p>
-                <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
-              </div>
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-10 mt-2 ">
-            <div class="card border-0 m-auto w-100 ProductsCards" >
-              <a href="product.html" class="text-decoration-none text-dark">
-              <div class="ProductsImageContainers">
-                <img src="assets/img/homePage/featuredProducts/product2.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-                <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-              </div>
-              <div class="card-body">
-                <div class=" d-none">
-                  <span class="shop__container__products__list__product__details__categorie">savon</span>
-                  <span class="shop__container__products__list__product__details__etat">promotion</span>
-                </div>
-                <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                <p class="card-text text-center m-1">Gel Douch</p>
-                <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
-              </div>
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-10 mt-2 ">
-            <div class="card border-0 m-auto w-100 ProductsCards" >
-              <a href="product.html" class="text-decoration-none text-dark">
-              <div class="ProductsImageContainers">
-                <img src="assets/img/homePage/featuredProducts/product3.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-                <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-              </div>
-              <div class="card-body">
-                <div class=" d-none">
-                  <span class="shop__container__products__list__product__details__categorie">savon</span>
-                  <span class="shop__container__products__list__product__details__etat">promotion</span>
-                </div>
-                <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                <p class="card-text text-center m-1">Gel Douch</p>
-                <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
-              </div>
-              </a>
-            </div>
-          </div>
-          </div>
     </section>
     
 
@@ -156,7 +112,6 @@
 
 <!-- footer end -->
 
-  <script src="js/explore.js"></script>
   <script src="js/scrollReveal.js"></script>
   <script src="js/cart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

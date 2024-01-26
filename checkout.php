@@ -26,24 +26,24 @@
         <div class="row p-5">
             <div class="col-lg-8 col-md-10 m-auto  col-12 p-3 mt-lg-0   ">
                 <h2 class="fw-bold fs-3">Informations de livraison</h2>
-                <form class="row mt-4" method="POST" action="confirmation-ordre.php">
+                <form class="row mt-4 needs-validation" novalidate method="POST" action="confirmation-ordre.php">
                   <div class="mb-3 col-lg-6 col-md-6 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" name="nomClient" placeholder="Nom">
+                    <input type="text" class="form-control fs-5 p-3" name="nomClient" placeholder="Nom"required>
                   </div>
                   <div class="mb-3 col-lg-6 col-md-6 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" name="prenomClient" placeholder="Prénom">
+                    <input type="text" class="form-control fs-5 p-3" name="prenomClient" placeholder="Prénom"required>
                   </div>
                   <div class="mb-3 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" name="adresseClient" placeholder="Adresse">
+                    <input type="text" class="form-control fs-5 p-3" name="adresseClient" placeholder="Adresse"required>
                   </div>
                   <div class="mb-3 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" name="villeClient" placeholder="Ville">
+                    <input type="text" class="form-control fs-5 p-3" name="villeClient" placeholder="Ville"required>
                   </div>
                   <div class="mb-3 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" name="codePostalClient" placeholder="Code Postal">
+                    <input type="text" class="form-control fs-5 p-3" name="codePostalClient" placeholder="Code Postal"required>
                   </div>
                   <div class="mb-3 col-12 m-auto ">
-                    <input type="text" class="form-control fs-5 p-3" name="telephoneClient" placeholder="Telephone">
+                    <input type="text" class="form-control fs-5 p-3" name="telephoneClient" placeholder="Telephone"required>
                   </div>
                   <div class="mb-3">
                     <textarea class="form-control fs-5 p-3" name="noteCommandeClient" placeholder="Notes de commande (facultatif)"  rows="3"></textarea>

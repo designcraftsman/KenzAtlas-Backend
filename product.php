@@ -7,6 +7,11 @@
     $produitStatement->bindParam('idProduit', $id, PDO::PARAM_INT); 
     $produitStatement->execute();
     $produit = $produitStatement->fetch(PDO::FETCH_ASSOC);
+    include('connection.php');
+    $sqlQuery = 'SELECT * FROM `produit` ORDER BY `produit`.`moyenneNotation` DESC LIMIT 4';
+    $produitsVedetteStatement = $db->prepare($sqlQuery);
+    $produitsVedetteStatement->execute();
+    $produitsVedette = $produitsVedetteStatement->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,83 +85,32 @@
 
         <section class="mt-5">
             <h2 class="text-center fw-bolder m-3 reveal">Vous pourriez aussi aimer</h2>
-            <div class="row d-flex justify-content-center align-content-center  mt-5 ">
+            <div class="row d-flex justify-content-center align-content-center reveal  mt-5 ">
+              <?php foreach($produitsVedette as $produitVedette){ ?>
               <div class="col-lg-3 col-md-6 col-10 mt-2 ">
                 <div class="card border-0 m-auto w-100 ProductsCards" >
-                  <a href="product.html" class="text-decoration-none text-dark">
+                  <a href="product?idProduit=<?php echo($produitVedette['idProduit']); ?>" class="text-decoration-none text-dark">
                   <div class="ProductsImageContainers">
-                    <img src="assets/img/homePage/featuredProducts/product2.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
+                    <img src="<?php echo($produitVedette['imageProduit1']); ?>" class="img-fluid card-img-top ProductsImages" alt="...">
                     <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
                   </div>
                   <div class="card-body">
                     <div class=" d-none">
-                      <span class="shop__container__products__list__product__details__categorie">savon</span>
-                      <span class="shop__container__products__list__product__details__etat">promotion</span>
+                      <span class="shop__container__products__list__product__details__categorie"><?php echo($produitVedette['categorieProduit']); ?></span>
+                      <span class="shop__container__products__list__product__details__etat"><?php echo($produitVedette['etatProduit']); ?></span>
                     </div>
-                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                    <p class="card-text text-center m-1">Gel Douch</p>
-                    <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
+                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price"><?php echo($produitVedette['prixProduit']); ?></span>dh</p>
+                    <p class="card-text text-center m-1"><?php echo($produitVedette['nomProduit']); ?></p>
+                    <p class="card-text text-center m-1">
+                        <?php for($i=0 ; $i < $produitVedette['moyenneNotation']; $i++){ ?>
+                            <i class="fa-solid fa-star fa-xs text-primary m-1"></i>
+                        <?php } ?>
+                    </p>
                   </div>
                   </a>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-6 col-10 mt-2 ">
-                <div class="card border-0 m-auto w-100 ProductsCards" >
-                  <a href="product.html" class="text-decoration-none text-dark">
-                  <div class="ProductsImageContainers">
-                    <img src="assets/img/homePage/featuredProducts/product4.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-                    <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-                  </div>
-                  <div class="card-body">
-                    <div class=" d-none">
-                      <span class="shop__container__products__list__product__details__categorie">savon</span>
-                      <span class="shop__container__products__list__product__details__etat">promotion</span>
-                    </div>
-                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                    <p class="card-text text-center m-1">Gel Douch</p>
-                    <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
-                  </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-10 mt-2 ">
-                <div class="card border-0 m-auto w-100 ProductsCards" >
-                  <a href="product.html" class="text-decoration-none text-dark">
-                  <div class="ProductsImageContainers">
-                    <img src="assets/img/homePage/featuredProducts/product1.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-                    <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-                  </div>
-                  <div class="card-body">
-                    <div class=" d-none">
-                      <span class="shop__container__products__list__product__details__categorie">savon</span>
-                      <span class="shop__container__products__list__product__details__etat">promotion</span>
-                    </div>
-                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                    <p class="card-text text-center m-1">Gel Douch</p>
-                    <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
-                  </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-10 mt-2 ">
-                <div class="card border-0 m-auto w-100 ProductsCards" >
-                  <a href="product.html" class="text-decoration-none text-dark">
-                  <div class="ProductsImageContainers">
-                    <img src="assets/img/homePage/featuredProducts/product3.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-                    <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-                  </div>
-                  <div class="card-body">
-                    <div class=" d-none">
-                      <span class="shop__container__products__list__product__details__categorie">savon</span>
-                      <span class="shop__container__products__list__product__details__etat">promotion</span>
-                    </div>
-                    <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-                    <p class="card-text text-center m-1">Gel Douch</p>
-                    <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
-                  </div>
-                  </a>
-                </div>
-              </div>
+              <?php } ?>
               </div>
         </section>
 
@@ -164,7 +118,6 @@
         <section class="mt-5 p-3 ">
             <h2 class="text-center fw-bolder m-3 reveal">Avis Clients</h2>
             <div class="comments">
-            <?php if(isset($_SESSION['nomUtulisateur'])){ ?>
             <h2 class="fs-5 fw-semibold reveal">Rédiger un avis :</h2>
             <form method="POST" class="reveal">
               <div class="star-widget mb-3 d-flex  align-items-center flex-wrap">
@@ -185,9 +138,13 @@
                   <div class="textarea mb-3">
                     <textarea cols="30" rows="4" name="avisUtulisateur" class="form-control p-2 fs-6" placeholder="Votre avis"></textarea>
                   </div>
+                  <?php if (isset($_SESSION['idUtulisateur'])){ ?>
                   <button type="submit" class="btn btn-primary  text-secondary" >Publier un avis</button>
+                  <?php }else{ ?>
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#login"  class="btn btn-primary  text-secondary" >Publier un avis</button>
+                  <?php } ?>
             </form>
-            <?php } ?>
+            <hr class="border-primary border-3">
             <?php
                 if ((isset($_POST['rate-5']) || isset($_POST['rate-4']) || isset($_POST['rate-3']) || isset($_POST['rate-2']) || isset($_POST['rate-1'])) && isset($_POST['avisUtulisateur'])) {
                   try {
@@ -220,6 +177,9 @@
               $avisStatement->bindParam(':idProduit', $id, PDO::PARAM_STR);
               $avisStatement->execute();
               $avisGroupe = $avisStatement->fetchAll(PDO::FETCH_ASSOC);
+              if(count($avisGroupe) <= 0){
+                  ?> <p class="fs-5 mt-5 fw-lighter  text-center">Aucun avis</p>  <?php
+              }else{
               foreach ($avisGroupe as $avis) {
             ?>
             <div class="comment mt-5 ">
@@ -232,7 +192,7 @@
                 <p class="fs-6 fw-lighter"><?php echo($avis['dateAvis']); ?></p>
                 <hr class="border-primary border-3">
             </div>
-            <?php } ?>
+            <?php }} ?>
             </div>
         </section>
     </div>

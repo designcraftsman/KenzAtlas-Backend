@@ -19,17 +19,19 @@
               $articlesStatement->execute();
               $articles = $articlesStatement->fetchAll();
               foreach($articles as $article){
-            ?>
-            <div class="row p-2 blog__container__aside__recentPosts align-content-center ">
-              <div class="col-4 blog__container__aside__recentPosts__img">
-                <img src="<?php echo($article['imgArticle']) ?>" class="w-100 object-fit-cover " alt="">
-              </div>
-              <div class="col-8 blog__container__aside__recentPosts__text ">
-                <p class="fs-6 fw-lighter m-0"><?php echo($article['dateArticle']) ?></p>
-                <h2 class="fs-6 m-0 blog__container__aside__recentPosts__text__title"><?php echo($article['titreArticle']) ?></h2>
-              </div>
-            </div>
-            <?php } ?>
+                ?>
+                <a href="article?idArticle=<?php echo($article['idArticle']); ?>" class="text-decoration-none text-dark">
+                <div class="row p-2 blog__container__aside__recentPosts align-content-center ">
+                  <div class="col-4 blog__container__aside__recentPosts__img">
+                    <img src="<?php echo($article['imgArticle']) ?>" class="w-100 object-fit-cover " alt="">
+                  </div>
+                  <div class="col-8 blog__container__aside__recentPosts__text ">
+                    <p class="fs-6 fw-lighter m-0"><?php echo($article['dateArticle']) ?></p>
+                    <h2 class="fs-6 m-0 blog__container__aside__recentPosts__text__title"><?php echo($article['titreArticle']) ?></h2>
+                  </div>
+                </div>
+                </a>
+              <?php } ?>
             
           </div>
 </div>

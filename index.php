@@ -1,4 +1,25 @@
 <?php session_start(); ?>
+<?php     
+          try{
+              include('connection.php');
+              $sqlQuery = 'SELECT * FROM `produit` ORDER BY `produit`.`moyenneNotation` DESC LIMIT 4';
+              $produitsVedetteStatement = $db->prepare($sqlQuery);
+              $produitsVedetteStatement->execute();
+              $produitsVedette = $produitsVedetteStatement->fetchAll();
+              include('connection.php');
+              $sqlQuery = 'SELECT * FROM `articles` ORDER BY `articles`.`dateArticle` DESC LIMIT 3';
+              $articlesStatement = $db->prepare($sqlQuery);
+              $articlesStatement->execute();
+              $articles = $articlesStatement->fetchAll();
+              include('connection.php');
+              $sqlQuery = 'SELECT * FROM `produit` WHERE etatproduit = "pack promo" ORDER BY `produit`.`moyenneNotation` DESC LIMIT 3';
+              $packsStatement = $db->prepare($sqlQuery);
+              $packsStatement->execute();
+              $packs = $packsStatement->fetchAll();
+          }catch(error){
+            header("Location: error");
+          }
+              ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,40 +48,44 @@
               <button type="button" data-bs-target="#carouselExampleDark" class="bg-secondary  rounded-circle" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselExampleDark" class="bg-secondary  rounded-circle" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner heroSection__container__carousel">
+            <div class="carousel-inner active heroSection__container__carousel">
               <div class="carousel-item h-100  active heroSection__container__carousel__item" data-bs-interval="10000">
-                <img  src="assets/img/homePage/heroSection/heroSection1.jpg"  class="d-block heroSection__container__carousel__item__img " alt="...">
+                <img  src="<?php echo($packs[0]['imageProduit1']); ?>"  class="d-block heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
-                    <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">ÉLÉMENTS ESSENTIELS</h3>
-                    <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2">Une beauté inspirée de la vraie vie</h2>
-                    <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p ">Fabriqués à partir d'ingrédients propres et non toxiques, nos produits sont conçus pour tout le monde.</p>
+                    <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
+                    <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2"><?php echo($packs[0]['nomProduit']); ?></h2>
+                    <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p "><?php echo($packs[0]['sousTitreProduit']); ?></p>
                   </div> 
-                  <button type="button" class="btn btn-primary btn-lg text-secondary fs-5 heroSection__container__carousel__item__info__btn fw-bolder">Acheter Maintenant</button>
+                  <a type="button" href="product?idProduit=<?php echo($packs[0]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5  fw-bolder">Acheter Maintenant</a>
                 </div>
               </div>
-              <div class="carousel-item  h-100  heroSection__container__carousel__item" data-bs-interval="2000">
-                <img src="assets/img/homePage/heroSection/heroSection2.jpg" class="d-block heroSection__container__carousel__item__img  " alt="...">
+              <div class="carousel-item h-100   heroSection__container__carousel__item" data-bs-interval="10000">
+                <img  src="<?php echo($packs[1]['imageProduit1']); ?>"  class="d-block heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
-                    <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">ÉLÉMENTS ESSENTIELS</h3>
-                    <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2">Une beauté inspirée de la vraie vie</h2>
-                    <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p ">Fabriqués à partir d'ingrédients propres et non toxiques, nos produits sont conçus pour tout le monde.</p>
+                    <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
+                    <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2"><?php echo($packs[1]['nomProduit']); ?></h2>
+                    <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p "><?php echo($packs[1]['sousTitreProduit']); ?></p>
                   </div> 
-                  <button type="button" class="btn btn-primary btn-lg text-secondary fs-5 heroSection__container__carousel__item__info__btn fw-bolder">Acheter Maintenant</button>
-                </div>
-              </div> 
-              <div class="carousel-item  h-100 heroSection__container__carousel__item">
-                <img src="assets/img/homePage/heroSection/heroSection3.jpg" class="d-block  heroSection__container__carousel__item__img  " alt="...">
-                <div class=" heroSection__container__carousel__item__info    ">
-                  <div class="heroSection__container__carousel__item__info__text ">
-                    <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">ÉLÉMENTS ESSENTIELS</h3>
-                    <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2">Une beauté inspirée de la vraie vie</h2>
-                    <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p ">Fabriqués à partir d'ingrédients propres et non toxiques, nos produits sont conçus pour tout le monde.</p>
-                  </div> 
-                  <button type="button" class="btn btn-primary btn-lg text-secondary fs-5 heroSection__container__carousel__item__info__btn fw-bolder">Acheter Maintenant</button>
+                  <a type="button" href="product?idProduit=<?php echo($packs[1]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5  fw-bolder">Acheter Maintenant</a>
                 </div>
               </div>
+              <div class="carousel-item h-100   heroSection__container__carousel__item" data-bs-interval="10000">
+                <img  src="<?php echo($packs[2]['imageProduit1']); ?>"  class="d-block heroSection__container__carousel__item__img " alt="...">
+                <div class=" heroSection__container__carousel__item__info    ">
+                  <div class="heroSection__container__carousel__item__info__text ">
+                    <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
+                    <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2"><?php echo($packs[2]['nomProduit']); ?></h2>
+                    <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p "><?php echo($packs[2]['sousTitreProduit']); ?></p>
+                  </div> 
+                  <a type="button" href="product?idProduit=<?php echo($packs[2]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5  fw-bolder">Acheter Maintenant</a>
+                </div>
+              </div>
+              
+              
+              
+               
             </div>
           </div>
     </section>
@@ -73,82 +98,32 @@
       <h2 class="featuredProducts__title fs-1 text-center reveal">Nos produits vedettes</h2>
       <h4 class="featuredProducts__subTitle fs-4 fw-lighter text-center reveal ">Obtenez la peau que vous désirez</h4>
       <div class="row d-flex featuredProducts__products justify-content-center align-content-center  mt-5  reveal">
+        <?php foreach($produitsVedette as $produit){ ?>
         <div class="col-lg-3 col-md-6 col-10 mt-2 ">
           <div class="card border-0 m-auto w-100 ProductsCards" >
-            <a href="product" class="text-decoration-none text-dark">
+            <a href="product?idProduit=<?php echo($produit['idProduit']); ?>" class="text-decoration-none text-dark">
             <div class="ProductsImageContainers">
-              <img src="assets/img/homePage/featuredProducts/product2.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
+              <img src="<?php echo($produit['imageProduit1']); ?>" class="img-fluid card-img-top ProductsImages" alt="...">
               <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
             </div>
             <div class="card-body">
               <div class=" d-none">
-                <span class="shop__container__products__list__product__details__categorie">shampoing</span>
-                <span class="shop__container__products__list__product__details__etat">promotion</span>
+                <span class="shop__container__products__list__product__details__categorie"><?php echo($produit['categorieProduit']); ?></span>
+                <span class="shop__container__products__list__product__details__etat"><?php echo($produit['etatProduit']); ?></span>
               </div>
-              <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">250.00</span>dh</p>
-              <p class="card-text text-center m-1">Gel Douch</p>
-              <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
+              <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price"><?php echo($produit['prixProduit']); ?></span>dh</p>
+              <p class="card-text text-center m-1"><?php echo($produit['nomProduit']); ?></p>
+              <p class="card-text text-center m-1">
+                <?php for($i=0 ; $i < $produit['moyenneNotation']; $i++){ ?>
+                <i class="fa-solid fa-star fa-xs text-primary m-1"></i>
+                  <?php } ?>
+              </p>
             </div>
             </a>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-10 mt-2 ">
-          <div class="card border-0 m-auto w-100 ProductsCards" >
-            <a href="product" class="text-decoration-none text-dark">
-            <div class="ProductsImageContainers">
-              <img src="assets/img/homePage/featuredProducts/product1.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-              <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-            </div>
-            <div class="card-body">
-              <div class=" d-none">
-                <span class="shop__container__products__list__product__details__categorie">savon</span>
-                <span class="shop__container__products__list__product__details__etat">promotion</span>
-              </div>
-              <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">180.99</span>dh</p>
-              <p class="card-text text-center m-1">Savon beldi</p>
-              <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
-            </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-10 mt-2 ">
-          <div class="card border-0 m-auto w-100 ProductsCards" >
-            <a href="product" class="text-decoration-none text-dark">
-            <div class="ProductsImageContainers">
-              <img src="assets/img/homePage/featuredProducts/product3.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-              <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-            </div>
-            <div class="card-body">
-              <div class=" d-none">
-                <span class="shop__container__products__list__product__details__categorie">ghassoul</span>
-                <span class="shop__container__products__list__product__details__etat">promotion</span>
-              </div>
-              <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">60.00</span>dh</p>
-              <p class="card-text text-center m-1">Shampoing</p>
-              <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
-            </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-10 mt-2 ">
-          <div class="card border-0 m-auto w-100 ProductsCards" >
-            <a href="product" class="text-decoration-none text-dark">
-            <div class="ProductsImageContainers">
-              <img src="assets/img/homePage/featuredProducts/product4.jpg" class="img-fluid card-img-top ProductsImages" alt="...">
-              <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
-            </div>
-            <div class="card-body">
-              <div class=" d-none">
-                <span class="shop__container__products__list__product__details__categorie">savon</span>
-                <span class="shop__container__products__list__product__details__etat">promotion</span>
-              </div>
-              <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price">300.00</span>dh</p>
-              <p class="card-text text-center m-1">Ghassoul</p>
-              <p class="card-text text-center m-1"><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i><i class="fa-solid m-1 fa-star fa-xs text-primary "></i><i class="fa-solid fa-star fa-xs text-primary m-1"></i></p>
-            </div>
-            </a>
-          </div>
-        </div>
+        <?php } ?>
+       
       </div>
     </section>
 
@@ -307,36 +282,18 @@
         <h3 class="blogSection__textContainer__subTitle fs-3 fw-lighter reveal">Découvrez nos dernières informations</h3>
       </div>
       <div class="row  mt-5 reveal ">
+        <?php foreach($articles as $article){ ?>
         <div class="col-lg-3 col-md-6 col-12 mt-2 blogSection__container m-auto ">
           <div class="card border-0 m-auto blogSection__container__item w-100" >
-            <img loading="lazy" src="assets/img/homePage/blogSection/article1.jpg" class="card-img-top object-fit-cover" alt="...">
+            <img loading="lazy" src="<?php echo($article['imgArticle']); ?>" class="card-img-top object-fit-cover" alt="...">
             <div class="card-body ">
-              <h5 class="card-title blog__container__posts__post__text__title">LA PEAU SÈCHE DU CORPS : HYDRATER POUR COMBATTRE TIRAILLEMENTS ET PICOTEMENTS</h5>
-              <p class="card-text blog__container__posts__post__text__body">Une peau sèche, voire très sèche, est par nature fragile et facilement irritable. La sécheresse cutanée est en effet à l'origine de sensations inconfortables, comme des picotements et des tiraillements. Une peau du corps sèche présente également par endroits des craquelures et des fissures. Elle a enfin tendance à peler et à laisser les rides apparaître davantage. A noter : il n'y a pas une peau sèche mais des peaux sèches. On distingue ainsi la peau sèche d'origine génétique, la peau sèche de la personne atopique, la peau sèche hivernale, la peau sèche aiguë causée par des produits nettoyants inadaptés..</p>
-              <a href="article.html" class="btn  btn-dark border-1 border-dark PostsButtons">En savoir plus</a>
+              <h5 class="card-title blog__container__posts__post__text__title"><?php echo($article['titreArticle']); ?></h5>
+              <p class="card-text blog__container__posts__post__text__body"><?php echo($article['contenuArticle']); ?></p>
+              <a href="article?idArticle=<?php echo($article['idArticle']); ?>" class="btn  btn-dark border-1 border-dark PostsButtons">En savoir plus</a>
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-12 mt-2 m-auto  ">
-          <div class="card border-0 m-auto blogSection__container__item   w-100" >
-            <img loading="lazy" src="assets/img/homePage/blogSection/article2.jpg" class="card-img-top  object-fit-cover " alt="...">
-            <div class="card-body">
-              <h5 class="card-title blog__container__posts__post__text__title">MICROBIOME : SES BÉNÉFICES POUR LA PEAU</h5>
-              <p class="card-text blog__container__posts__post__text__body">Véritable fourmilière géante, notre corps est composé de toutes sortes d’organismes dont chaque espèce joue un rôle de maintien global de notre santé. La vision sensationnaliste datant de l’époque victorienne selon laquelle « les microbes sont mauvais » n’est valable que dans les livres d'histoire, pas en matière de soins quotidiens de la peau. Commençons par le côté humain du phénomène : chaque environnement formant les nombreux « paysages » richement peuplés de notre organisme se rend accueillant pour ses innombrables hôtes. Par exemple, la peau apporte humidité et chaleur, ainsi que des oligo-éléments et des sources de carbone et d’azote pour satisfaire ses précieux résidents. En retour, les microbes y ayant élu domicile remplissent de multiples fonctions afin de maintenir leur foyer en bonne santé.</p>
-              <a href="article.html" class="btn  btn-dark border-1 border-dark PostsButtons">En savoir plus</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-12 mt-2 m-auto ">
-          <div class="card border-0 m-auto blogSection__container__item w-100" >
-            <img loading="lazy" src="assets/img/homePage/blogSection/article3.jpg" class="card-img-top object-fit-cover" alt="...">
-            <div class="card-body">
-              <h5 class="card-title blog__container__posts__post__text__title">COMMENT TRAITER LA PEAU SÈCHE ET DÉSHYDRATÉE?</h5>
-              <p class="card-text blog__container__posts__post__text__body">Le froid, le vent, l’eau calcaire, l’hygiène de vie ou encore une prédisposition génétique : de nombreux facteurs engendrent la sécheresse de la peau. Dans cet article, apprenez à comprendre les phénomènes qui causent la déshydratation et la sécheresse de l’épiderme afin de mieux prendre soin de votre peau au quotidien et d’éviter les désagréments qui en découlent.</p>
-              <a href="article.html" class="btn btn-dark border-1 border-dark PostsButtons">En savoir plus</a>
-            </div>
-          </div>
-        </div>
+        <?php } ?>
       </div>
     </section>
 

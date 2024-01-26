@@ -44,6 +44,15 @@ document.addEventListener('DOMContentLoaded', function () {
               <button class="btn btn-dark text-secondary mt-lg-0 mt-md-0 mt-3 delete-btn">Supprimer</button>
           </div>
       `;
+      // Add event listener for delete button
+      const deleteButtons = document.querySelectorAll('.delete-btn');
+      deleteButtons.forEach(button => {
+          button.addEventListener('click', function () {
+              const rowIndex = this.closest('.cartProducts__product').getAttribute('data-index');
+              // Call a function to handle deletion based on the rowIndex
+              handleDelete(rowIndex);
+          });
+       });
         cartContainer.appendChild(productElement);
         updateTotalCost(cartProducts);
         function updateTotalCost(products){
@@ -88,16 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
           window.location.href = 'checkout';
         });
 
-
-        // Add event listener for delete button
-        const deleteButtons = document.querySelectorAll('.delete-btn');
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const rowIndex = this.closest('.cartProducts__product').getAttribute('data-index');
-                // Call a function to handle deletion based on the rowIndex
-                handleDelete(rowIndex);
-            });
-         });
          function handleDelete(rowIndex) {
           // Retrieve cart information from localStorage
           let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];

@@ -44,7 +44,7 @@ if(!isset($_POST['nomClient']) || !isset($_POST['prenomClient']) || !isset($_POS
         $sqlQueryProducts = "INSERT INTO `produitscommandés` (`numeroCommande`, `idProduit`, `quantiteCommandés`) VALUES ('$numeroCommande', '$id', '$quantite');";
         $db->exec($sqlQueryProducts);
         }
-        header("Location: thank-you.php");
+        header("Location: thank-you");
 }
 ?>
 

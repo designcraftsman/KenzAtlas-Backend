@@ -165,7 +165,7 @@
                   <div class="card-body">
                     <div class="d-none shop__container__products__list__product__details d-none">
                       <span class="shop__container__products__list__product__details__categorie"><?php echo($produit['categorieProduit']); ?></span>
-                      <span class="shop__container__products__list__product__details__etat"><?php echo('etatProduit'); ?></span>
+                      <span class="shop__container__products__list__product__details__etat"><?php echo($produit['etatProduit']); ?></span>
                     </div>
                     <p class="card-text text-center m-1 fw-bolder"><span class="shop__container__products__list__product__price"><?php echo($produit['prixProduit']); ?></span>dh</p>
                     <p class="card-text text-center m-1 shop__container__products__list__product__title title"><?php echo($produit['nomProduit']); ?></p>
