@@ -50,7 +50,7 @@
             </div>
             <div class="carousel-inner active heroSection__container__carousel">
               <div class="carousel-item h-100  active heroSection__container__carousel__item" data-bs-interval="10000">
-                <img  src="<?php echo($packs[0]['imageProduit1']); ?>"  class="d-block heroSection__container__carousel__item__img " alt="...">
+                <img  src="<?php echo($packs[0]['imageProduit1']); ?>"  class="d-block object-fit-cover d-block w-100 heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
                     <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
@@ -61,7 +61,7 @@
                 </div>
               </div>
               <div class="carousel-item h-100   heroSection__container__carousel__item" data-bs-interval="10000">
-                <img  src="<?php echo($packs[1]['imageProduit1']); ?>"  class="d-block heroSection__container__carousel__item__img " alt="...">
+                <img  src="<?php echo($packs[1]['imageProduit1']); ?>"  class="object-fit-cover d-block w-100 heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
                     <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
@@ -72,7 +72,7 @@
                 </div>
               </div>
               <div class="carousel-item h-100   heroSection__container__carousel__item" data-bs-interval="10000">
-                <img  src="<?php echo($packs[2]['imageProduit1']); ?>"  class="d-block heroSection__container__carousel__item__img " alt="...">
+                <img  src="<?php echo($packs[2]['imageProduit1']); ?>"  class="object-fit-cover d-block w-100 heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
                     <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>

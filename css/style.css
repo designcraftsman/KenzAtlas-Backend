@@ -95,19 +95,16 @@ html {
 .heroSection {
   font-family: Inter, sans-serif;
 }
-.heroSection__container__carousel {
-  height: 88vh;
-}
 .heroSection__container__carousel__item {
   position: relative;
 }
 .heroSection__container__carousel__item__img {
-  filter: brightness(50%);
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+  filter: brightness(60%);
+  z-index: 99;
+  height: 90vh;
 }
 .heroSection__container__carousel__item__info {
+  z-index: 1;
   display: inline-block;
   position: absolute;
   top: 28%;

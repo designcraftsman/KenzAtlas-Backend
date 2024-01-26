@@ -149,10 +149,10 @@
             <?php } ?>
           <div class="offcanvas-footer mt-5">
             <ul class="list-unstyled text-center ">
-              <li class="d-inline m-2 "><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="#"><i class="fa-brands fa-facebook fa-lg"></i></a></li>
-              <li class="d-inline m-2 "><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a></li>
-              <li class="d-inline m-2"><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="#"><i class="fa-brands fa-tiktok fa-lg"></i></a></li>
-              <li class="d-inline m-2"><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="#"><i class="fa-brands fa-whatsapp fa-lg"></i></a></li>
+              <li class="d-inline m-2 "><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="https://www.facebook.com/kenz.atla?sfnsn=wa&mibextid=RUbZ1f"><i class="fa-brands fa-facebook fa-lg"></i></a></li>
+              <li class="d-inline m-2 "><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="https://www.instagram.com/kenz.atlas?igsh=MTg2bWVoYjEzbzBhag=="><i class="fa-brands fa-instagram fa-lg"></i></a></li>
+              <li class="d-inline m-2"><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="https://www.tiktok.com/@kenzatlaspro?_t=8jMB8zQPPWf&_r=1"><i class="fa-brands fa-tiktok fa-lg"></i></a></li>
+              <li class="d-inline m-2"><a class="text-decoration-none offcanvasNavbar__nav__socialLink text-dark" href="https://wa.me/+212684822768"><i class="fa-brands fa-whatsapp fa-lg"></i></a></li>
             </ul>
           </div>
           <p class="text-center fw-lighter mt-5  ">© 2023 DesignCraftsMan Tous droits réservés.</p>
