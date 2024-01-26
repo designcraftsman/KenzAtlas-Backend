@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
               handleDelete(rowIndex);
           });
        });
+       
         cartContainer.appendChild(productElement);
         updateTotalCost(cartProducts);
         function updateTotalCost(products){
@@ -97,20 +98,30 @@ document.addEventListener('DOMContentLoaded', function () {
           window.location.href = 'checkout';
         });
 
-         function handleDelete(rowIndex) {
+        function handleDelete(rowIndex) {
           // Retrieve cart information from localStorage
           let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
-        
+      
           // Remove the product at the specified index
           cartProducts.splice(rowIndex, 1);
-        
+      
+          // Update the cart count
+          updateCartCount(cartProducts);
+      
           // Store the updated cart state back in localStorage
           localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
-          updateCartCount(cartProducts);
+      
+          // Check if there are no more products in the cart
+          if (cartProducts.length === 0) {
+              // Clear cartCount and other relevant data
+              localStorage.removeItem('cartCount');
+              localStorage.removeItem('cartTotalCost');
+          }
+      
           // Refresh the page or update the display to reflect the changes
           location.reload();
-        }
-        });
+      }
+    });      
 
 
 

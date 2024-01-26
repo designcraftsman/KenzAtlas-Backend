@@ -22,11 +22,11 @@
           <h1 class="display-4    fw-bolder  mt-5  contactContainer__title">Contactez-Nous</h1>
           <div class=" m-auto ">
             <h2 class="fw-light fs-3 mt-4 contactContainer__box">Demandez-nous n'importe quoi </h2>
-            <form class="mt-3 contactContainer__box">
-                <input type="text" class="p-2 mt-4 w-100 rounded form-control" placeholder="Votre nom complet" required >
-                <input type="text" class="p-2 mt-4 w-100 rounded form-control " placeholder="Votre adresse email" required>
-                <textarea  class="w-100 mt-4 p-2  form-control " rows="5" placeholder="Écrivez un message" required></textarea>
-                <button class="btn btn-primary text-secondary  btn-lg    mt-4 fw-normal ">Envoyer</button>
+            <form class="mt-3 contactContainer__box" method="POST">
+                <input type="text" class="p-2 mt-4 w-100 rounded form-control" name="nomUser" placeholder="Votre nom complet" required >
+                <input type="text" class="p-2 mt-4 w-100 rounded form-control " name="emailUser" placeholder="Votre adresse email" required>
+                <textarea  class="w-100 mt-4 p-2  form-control " rows="5" name="messageUser" placeholder="Écrivez un message" required></textarea>
+                <button type="submit" class="btn btn-primary text-secondary  btn-lg    mt-4 fw-normal ">Envoyer</button>
             </form>
         </div>
         </div>

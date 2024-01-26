@@ -70,7 +70,7 @@
                   <?php for( $i=0 ; $i < $produit['moyenneNotation']; $i++){ ?>
                   <i class="fa-solid fa-star fa-xs text-primary m-1"></i>
                   <?php } ?>
-                </span> | <span class="m-2"><?php echo(count($avisGroupe)); ?> reviews </span></p>
+                </span> | <span class="m-2"><?php echo(count($avisGroupe)); ?> avis </span></p>
                 <p class="fw-lighter fs-5"><?php echo($produit['sousTitreProduit']); ?></p>
                 <div class="d-flex justify-content-between align-items-center p-2 ">
                     <p class="w-50 fs-6">Quantité : <input class="w-50 rounded border-1 text-center fw-bolder productPage__product__quantity " min="1" max="10" value="1" type="number"></input></p>

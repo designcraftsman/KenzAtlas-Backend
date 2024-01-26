@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+ session_start();
+ if(!isset($_SESSION['nomUtulisateur'])){
+  header('Location: error');
+  exit();
+}
+  ?>
 <?php
             	
              if(isset($_POST['nouveaumotdepasse']) && isset($_POST['motdepasseactuel'])){

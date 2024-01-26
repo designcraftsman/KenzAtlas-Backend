@@ -57,18 +57,18 @@
                     <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2"><?php echo($packs[0]['nomProduit']); ?></h2>
                     <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p "><?php echo($packs[0]['sousTitreProduit']); ?></p>
                   </div> 
-                  <a type="button" href="product?idProduit=<?php echo($packs[0]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5  fw-bolder">Acheter Maintenant</a>
+                  <a type="button" href="product?idProduit=<?php echo($packs[0]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5 heroSection__container__carousel__item__info__btn  fw-bolder">Acheter Maintenant</a>
                 </div>
               </div>
               <div class="carousel-item h-100   heroSection__container__carousel__item" data-bs-interval="10000">
                 <img  src="<?php echo($packs[1]['imageProduit1']); ?>"  class="object-fit-cover d-block w-100 heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
-                    <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
+                    <h3 class="fs-5 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
                     <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2"><?php echo($packs[1]['nomProduit']); ?></h2>
                     <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p "><?php echo($packs[1]['sousTitreProduit']); ?></p>
                   </div> 
-                  <a type="button" href="product?idProduit=<?php echo($packs[1]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5  fw-bolder">Acheter Maintenant</a>
+                  <a type="button" href="product?idProduit=<?php echo($packs[1]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary heroSection__container__carousel__item__info__btn fs-5  fw-bolder">Acheter Maintenant</a>
                 </div>
               </div>
               <div class="carousel-item h-100   heroSection__container__carousel__item" data-bs-interval="10000">
@@ -79,7 +79,7 @@
                     <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2"><?php echo($packs[2]['nomProduit']); ?></h2>
                     <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p "><?php echo($packs[2]['sousTitreProduit']); ?></p>
                   </div> 
-                  <a type="button" href="product?idProduit=<?php echo($packs[2]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5  fw-bolder">Acheter Maintenant</a>
+                  <a type="button" href="product?idProduit=<?php echo($packs[2]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5 heroSection__container__carousel__item__info__btn  fw-bolder">Acheter Maintenant</a>
                 </div>
               </div>
               

@@ -99,7 +99,7 @@ html {
   position: relative;
 }
 .heroSection__container__carousel__item__img {
-  filter: brightness(60%);
+  filter: brightness(70%);
   z-index: 99;
   height: 90vh;
 }
@@ -109,7 +109,7 @@ html {
   position: absolute;
   top: 28%;
   left: 11%;
-  width: 70%;
+  width: 52%;
   text-align: start;
 }
 .heroSection__container__carousel__item__info__text {
@@ -125,7 +125,7 @@ html {
   color: #FFFFFF;
 }
 .heroSection__container__carousel__item__info__p {
-  color: #E3DDDD;
+  color: #FFFFFF;
 }
 .heroSection__container__carousel__item__info__btn {
   animation: display-btn 600ms;
