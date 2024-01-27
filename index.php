@@ -12,7 +12,7 @@
               $articlesStatement->execute();
               $articles = $articlesStatement->fetchAll();
               include('connection.php');
-              $sqlQuery = 'SELECT * FROM `produit` WHERE etatproduit = "pack promo" ORDER BY `produit`.`moyenneNotation` DESC LIMIT 3';
+              $sqlQuery = 'SELECT * FROM `produit` WHERE etatproduit = "pack promo" ORDER BY `produit`.`idProduit` DESC LIMIT 3';
               $packsStatement = $db->prepare($sqlQuery);
               $packsStatement->execute();
               $packs = $packsStatement->fetchAll();

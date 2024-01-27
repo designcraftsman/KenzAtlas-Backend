@@ -74,23 +74,23 @@
  <nav class="navbar navbar-light bg-primary sticky-top  p-0 m-0  ">
         <div class="container-fluid navbar__container m-0 p-0">
           <a class=" m-0 p-0 ps-3 " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-             <i  class="fa-solid fa-bars-staggered fa-2xl navbar__container__icon navbar__icon "></i>
+             <i  class="fa-solid fa-bars-staggered fa-xl navbar__container__icon navbar__icon "></i>
           </a>
             <a class="navbar-brand " href="index">
                 <!--Logo image-->
-                <img src="assets/img/logo/svg_white.svg" alt=""  width="180" class="d-inline-block align-text-top">
+                <img src="assets/img/logo/svg_white.svg" alt=""  width="160" class="d-inline-block align-text-top">
             </a>
             <div class="navbar__container__options order-lg-2 pe-4 ">
                 <a class="m-1" data-bs-toggle="collapse" href="#collapseExample" type="button" aria-expanded="false" aria-controls="collapseExample">
-                  <i class="fa-solid fa-magnifying-glass fa-xl navbar__container__options__icons d-none d-lg-inline-block navbar__icon" ></i>
+                  <i class="fa-solid fa-magnifying-glass fa-lg navbar__container__options__icons d-none d-lg-inline-block navbar__icon" ></i>
                 </a>
                 <?php if(!isset($_SESSION['nomUtulisateur'])){ ?>
                 <a  type="button" data-bs-toggle="modal" data-bs-target="#login">
-                  <i class="fa-solid fa-user fa-xl navbar__container__options__icons d-none d-lg-inline-block navbar__icon" ></i>
+                  <i class="fa-solid fa-user fa-lg navbar__container__options__icons d-none d-lg-inline-block navbar__icon" ></i>
                 </a>
                 <?php }else{ ?>
                 <a  class="text-decoration-none m-1 d-none d-lg-inline-block" data-bs-toggle="collapse" href="#userCollapse" role="button" aria-expanded="false" aria-controls="collapseExample" >
-                  <i class="fa-solid fa-user fa-xl navbar__container__options__icons  navbar__icon m-auto" ></i>
+                  <i class="fa-solid fa-user fa-lg navbar__container__options__icons  navbar__icon m-auto" ></i>
                    <span class="fs-6 fw-light text-secon text-secondary"><?php echo($_SESSION['prenomUtulisateur'].' '.$_SESSION['nomUtulisateur']); ?></span>
                    <div class="collapse position-absolute ms-4 " id="userCollapse">
                     <div class="card card-body   fs-6 fw-normal p-0 ">
@@ -109,7 +109,7 @@
                 <a href="cart.php" class="d-inline-block  m-lg-1 m-0   position-relative navbar__container__options__cart  ">
                   <span id="cartIconContainer" class="d-inline-block bg-dark rounded-5"></span>
                   <span id="cartIcon" class=" text-center   text-secondary  fs-6 fw-bolder "></span>   
-                  <i class="fa-solid fa-cart-shopping fa-xl pointer-event  navbar__container__options__icons navbar__icon " ></i>
+                  <i class="fa-solid fa-cart-shopping fa-lg pointer-event  navbar__container__options__icons navbar__icon " ></i>
                 </a>
             </div>
           </div>
