@@ -163,7 +163,7 @@
         <div class="col-lg-4 col-md-6 col-12 infoSection__container__item  mt-5 ">
           <div class="infoSection__container__item__icon m-3 reveal"><i class="fa-solid fa-truck display-1 text-primary "></i></div>
           <h2 class="infoSection__container__item__title  m-4 fs-3 fw-bold 3  reveal ">Livraison gratuite</h2>
-          <h3 class="infoSection__container__item__subTitle fw-normal fs-5  reveal">Livraison gratuite pour les commandes de plus de 130 $</h3>
+          <h3 class="infoSection__container__item__subTitle fw-normal fs-5  reveal">Livraison gratuite pour tous les commandes</h3>
         </div>
         <div class="col-lg-4 col-md-6 col-12 infoSection__container__item  mt-5 ">
           <div class="infoSection__container__item__icon m-3 reveal"><i class="fa-solid fa-arrow-right-arrow-left display-1  text-primary "></i></div>

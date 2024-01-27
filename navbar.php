@@ -8,16 +8,18 @@
             $prenomUtulisateur = $_POST['prenomUtulisateur'];
             $emailUtulisateur = $_POST['emailUtulisateur'];
             $motdepasseUtulisateur = $_POST['motdepasseUtulisateur'];
+            $dateNaissanceUtulisateur = $_POST['dateNaissanceUtulisateur'];
             $hashedPassword = password_hash($motdepasseUtulisateur, PASSWORD_BCRYPT);
     
             // Prepare the SQL query using placeholders
-            $sqlQuery = 'INSERT INTO utulisateur (nomUtulisateur ,prenomUtulisateur ,emailUtulisateur, motdepasseUtulisateur  ) VALUES (:nomUtulisateur,:prenomUtulisateur,:emailUtulisateur,:motdepasseUtulisateur)';
+            $sqlQuery = 'INSERT INTO utulisateur (nomUtulisateur ,prenomUtulisateur ,emailUtulisateur, motdepasseUtulisateur, dateNaissanceUtulisateur  ) VALUES (:nomUtulisateur,:prenomUtulisateur,:emailUtulisateur,:motdepasseUtulisateur, :dateNaissanceUtulisateur)';
             $insertData = $db->prepare($sqlQuery);
             $insertData->execute([
                 'nomUtulisateur' => $nomUtulisateur,
                 'prenomUtulisateur' => $prenomUtulisateur,
                 'emailUtulisateur' => $emailUtulisateur,
-                'motdepasseUtulisateur' => $hashedPassword
+                'motdepasseUtulisateur' => $hashedPassword,
+                'dateNaissanceUtulisateur' => $dateNaissanceUtulisateur
             ]);
         } catch (PDOException $e) {
             echo 'An error occurred: ' . $e->getMessage();
@@ -234,6 +236,7 @@
               <input type="text" class="p-2 w-100 m-auto mt-3 fs-5 border-3  rounded  form-control "name="prenomUtulisateur" placeholder="Prenom" required>
               <input type="email" class="p-2 w-100 m-auto mt-3 fs-5 border-3 rounded form-control  "name="emailUtulisateur" placeholder="Email" required>
               <input type="password" class="p-2 w-100 m-auto mt-3 fs-5 border-3  rounded  form-control "name="motdepasseUtulisateur" placeholder="Mot de passe" required>
+              <input type="date" class="p-2 w-100 m-auto mt-3 fs-5 border-3 rounded form-control " name="dateNaissanceUtulisateur" required>
               <div class="form-check mt-3 fs-6 ms-1">
                 <input class="form-check-input " type="checkbox" value="" id="flexCheckChecked" required>
                 <label class="form-check-label " for="flexCheckChecked">
