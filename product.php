@@ -43,13 +43,13 @@
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active productPage__container__imgContainer__img h-100">
-                    <img src="<?php echo($produit['imageProduit1']) ?>" class="object-fit-cover productPage__product__img d-block w-100 productPage__container__imgContainer__img__select " alt="...">
+                    <img src="<?php echo($produit['imageProduit1']) ?>" class="object-fit-contain productPage__product__img d-block w-100 productPage__container__imgContainer__img__select " alt="...">
                   </div>
                   <div class="carousel-item productPage__container__imgContainer__img h-100">
-                    <img src="<?php echo($produit['imageProduit2']) ?>" class="object-fit-cover d-block w-100 productPage__container__imgContainer__img__select " alt="...">
+                    <img src="<?php echo($produit['imageProduit2']) ?>" class="object-fit-contain d-block w-100 productPage__container__imgContainer__img__select " alt="...">
                   </div>
                   <div class="carousel-item productPage__container__imgContainer__img h-100">
-                    <img src="<?php echo($produit['imageProduit3']) ?>" class="object-fit-cover d-block w-100 productPage__container__imgContainer__img__select " alt="...">
+                    <img src="<?php echo($produit['imageProduit3']) ?>" class="object-fit-contain d-block w-100 productPage__container__imgContainer__img__select " alt="...">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
