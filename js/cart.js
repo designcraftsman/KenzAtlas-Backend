@@ -44,8 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
               <button class="btn btn-dark text-secondary mt-lg-0 mt-md-0 mt-3 delete-btn">Supprimer</button>
           </div>
       `;
-      // Add event listener for delete button
-      const deleteButtons = document.querySelectorAll('.delete-btn');
+        cartContainer.appendChild(productElement);
+        });}
+        const deleteButtons = document.querySelectorAll('.delete-btn');
       deleteButtons.forEach(button => {
           button.addEventListener('click', function () {
               const rowIndex = this.closest('.cartProducts__product').getAttribute('data-index');
@@ -53,8 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
               handleDelete(rowIndex);
           });
        });
-       
-        cartContainer.appendChild(productElement);
         updateTotalCost(cartProducts);
         function updateTotalCost(products){
           const totalCost = products.reduce((sum, product) => sum + parseInt(product.totalCost), 0);
@@ -63,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
           cartTotalCost.textContent=totalCost.toString();
         }
         updateCartCount(cartProducts);
-        });}
         function updateCartProductsCookie() {
           const orderRecapProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
           const jsonString = JSON.stringify(orderRecapProducts);
