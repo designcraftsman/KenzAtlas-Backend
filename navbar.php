@@ -116,8 +116,8 @@
             <div class="collapse w-100" id="collapseExample">
               <div class="card card-body bg-primary border-0  ">
                 <form class="row " id="searchForm" onsubmit="filterProducts(event)">
-                  <input id="searchInput" type="text" class="col-lg-9 col-md-8 col-12 m-auto rounded border-1   p-2 d-inline " placeholder="Rechercher un produit" required>
-                  <button type="submit"   class="btn btn-dark m-auto fw-bold btn-lg mt-lg-0 mt-md-0 mt-2 fs-6  col-lg-2 col-md-3 col-12 d text-secondary  d-inline ">Rechercher</button>
+                  <input id="searchInput" type="text" class="col-lg-10 col-md-8 col-12 m-auto rounded border-1   p-2 d-inline " placeholder="Rechercher un produit" required>
+                  <button type="submit"   class="btn btn-dark m-auto fw-bold btn-lg mt-lg-0 mt-md-0 mt-2 fs-6  col-lg-1 col-md-3 col-12 d text-secondary  d-inline ">Rechercher</button>
                 </form>
             </div>
             </div>

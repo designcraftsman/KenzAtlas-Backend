@@ -3,14 +3,14 @@
 <?php 
     if(isset($_GET['categorie'])){
       $categorieArticle = $_GET['categorie']; 
-      $sqlQuery = "SELECT * FROM articles WHERE categorieArticle = :categorie ORDER BY `articles`.`dateArticle` DESC ;";
+      $sqlQuery = "SELECT * FROM articles WHERE categorieArticle = :categorie ORDER BY `articles`.`idArticle` DESC ;";
       $articlesStatement = $db->prepare($sqlQuery);
       $articlesStatement->bindParam(':categorie', $categorieArticle, PDO::PARAM_STR);
       $articlesStatement->execute();
       $articles = $articlesStatement->fetchAll(PDO::FETCH_ASSOC);
 
     }else{
-      $sqlQuery = 'SELECT * FROM articles ORDER BY `articles`.`dateArticle` DESC';
+      $sqlQuery = 'SELECT * FROM articles ORDER BY `articles`.`idArticle` DESC';
       $articlesStatement = $db->prepare($sqlQuery);
       $articlesStatement->execute();
       $articles = $articlesStatement->fetchAll();
