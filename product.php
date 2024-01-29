@@ -73,7 +73,15 @@
                 </span> | <span class="m-2"><?php echo(count($avisGroupe)); ?> avis </span></p>
                 <p class="fw-lighter fs-5"><?php echo($produit['sousTitreProduit']); ?></p>
                 <div class="d-flex justify-content-between align-items-center p-2 ">
-                    <p class="w-50 fs-6">Quantité : <input class="w-50 rounded border-1 text-center fw-bolder productPage__product__quantity " min="1" max="10" value="1" type="number"></input></p>
+                  <div>
+                    <p class=" fs-6 d-inline ">Quantité : 
+                      <div class="wrapper">
+                        <span class="minus fs-6">-</span>
+                        <input class="w-50 fs-6  text-center fw-bolder productPage__product__quantity num" min="1" max="10" value="1" type="number"></input>
+                        <span class="plus fs-6">+</span>
+                      </div>
+                    </p>
+                  </div>
                     <i class="fa-brands fa-square-whatsapp  fa-2xl fs-1  " style="color: #43ce1c;"></i>
                 </div>
                 <button id="addProductToCart"type="button"class="btn btn-primary text-secondary w-100 btn-lg fw-bolder ">Ajouter au panier</button>
