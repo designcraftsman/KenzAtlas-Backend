@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  
     // Retrieve cart count from localStorage
     const cartCount = localStorage.getItem('cartCount') || 0;
     const cartIcons = document.querySelectorAll('#cartIcon');
@@ -40,7 +41,11 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="col-lg-3 col-2">${product.title}</div>
           <div class="col-4 "><span class="fs-5 fw-light">${product.totalCost} dh</span></div>
           <div class=" col-4 d-flex justify-content-between flex-wrap">
-              <input type="number" class="cartProductQuantity m-lg-0 m-md-0 m-auto  " min="0" max="5" value="${product.quantity}">
+              <div class="wrapper">
+                <span class="minus fs-6 p-2 fw-bolder">-</span>
+                <input class="d-inline-block cartProductQuantity  fs-6 p-1 text-center fw-bolder productPage__product__quantity num" min="1" max="5"  value="${product.quantity}" type="number"></input>
+                <span class="plus fs-6 p-2 fw-bolder">+</span>
+              </div>
               <button class="btn btn-dark text-secondary mt-lg-0 mt-md-0 mt-3 delete-btn">Supprimer</button>
           </div>
       `;
@@ -54,13 +59,15 @@ document.addEventListener('DOMContentLoaded', function () {
               handleDelete(rowIndex);
           });
        });
+
         updateTotalCost(cartProducts);
-        function updateTotalCost(products){
-          const totalCost = products.reduce((sum, product) => sum + parseInt(product.totalCost), 0);
+
+        function updateTotalCost(products) {
+          const totalCost = products.reduce((sum, product) => sum + (product.quantity * product.price), 0);
           localStorage.setItem('cartTotalCost', totalCost.toString());
           var cartTotalCost = document.getElementById('cartTotalCost');
-          cartTotalCost.textContent=totalCost.toString();
-        }
+          cartTotalCost.textContent = totalCost.toString();
+      }
         updateCartCount(cartProducts);
         function updateCartProductsCookie() {
           const orderRecapProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
@@ -74,6 +81,8 @@ document.addEventListener('DOMContentLoaded', function () {
           const totalCount = products.reduce((sum, product) => sum + parseInt(product.quantity), 0);
           localStorage.setItem('cartCount', totalCount.toString());
         }
+
+
         const cartProductQuantityInputs = document.querySelectorAll('.cartProductQuantity');
         cartProductQuantityInputs.forEach( input =>{
             input.addEventListener('change',function(){
@@ -89,6 +98,54 @@ document.addEventListener('DOMContentLoaded', function () {
               location.reload();
             }); 
         });
+        // Loop through each plus button and attach an event listener
+        // Select all elements with the class "plus" and "minus"
+        const quantityInputs = document.querySelectorAll(".cartProductQuantity");
+        const plusButtons = document.querySelectorAll(".plus");
+        const minusButtons = document.querySelectorAll(".minus");
+
+        plusButtons.forEach((plusButton, index) => {
+          plusButton.addEventListener("click", () => {
+              let currentValue = parseInt(cartProductQuantityInputs[index].value);
+              if (currentValue < 5) { // Assuming the maximum quantity is 5
+                  currentValue++;
+                  cartProductQuantityInputs[index].value = currentValue;
+                  updateProductQuantity(index, currentValue);
+              }
+          });
+      });
+
+        // Loop through each minus button and attach an event listener
+        minusButtons.forEach((minusButton, index) => {
+          minusButton.addEventListener("click", () => {
+              let currentValue = parseInt(cartProductQuantityInputs[index].value);
+              if (currentValue > 1) {
+                  currentValue--;
+                  cartProductQuantityInputs[index].value = currentValue;
+                  updateProductQuantity(index, currentValue);
+              }
+          });
+      });
+
+        // Function to update the quantity of a product in the cartProducts array
+        function updateProductQuantity(index, newValue) {
+          const cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+          cartProducts[index].quantity = newValue;
+          // Update the cart total cost based on the new quantity
+          cartProducts[index].totalCost = cartProducts[index].quantity * cartProducts[index].price;
+          localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+          // Update the total cost displayed
+          updateTotalCost(cartProducts);
+          // Update the cart count based on the updated quantities
+          updateCartCount(cartProducts);
+          location.reload();
+      }
+
+      // Function to update the cart count based on product quantities
+      function updateCartCount(products) {
+        const totalCount = products.reduce((sum, product) => sum + parseInt(product.quantity), 0);
+        localStorage.setItem('cartCount', totalCount.toString());
+      }
 
         const cartConfirm = document.getElementById('cartConfirmBtn');
 

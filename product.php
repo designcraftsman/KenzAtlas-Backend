@@ -75,10 +75,12 @@
                 <div class="d-flex justify-content-between align-items-center p-2 ">
                   <div>
                     <p class=" fs-6 d-inline ">Quantité : 
-                      <div class="wrapper">
-                        <span class="minus fs-6">-</span>
-                        <input class="w-50 fs-6  text-center fw-bolder productPage__product__quantity num" min="1" max="10" value="1" type="number"></input>
-                        <span class="plus fs-6">+</span>
+                      <div class="d-inline-block">
+                        <div class="wrapper">
+                          <span class="minus fs-6 p-2 fw-bolder">-</span>
+                          <input class="d-inline-block   fs-6 p-1 text-center fw-bolder productPage__product__quantity num" min="1" max="5" value="1" type="number"></input>
+                          <span class="plus fs-6 p-2 fw-bolder">+</span>
+                        </div>
                       </div>
                     </p>
                   </div>
