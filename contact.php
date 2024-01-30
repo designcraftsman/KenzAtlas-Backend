@@ -23,11 +23,36 @@
           <div class=" m-auto ">
             <h2 class="fw-light fs-3 mt-4 contactContainer__box">Demandez-nous n'importe quoi </h2>
             <form class="mt-3 contactContainer__box" method="POST">
-                <input type="text" class="p-2 mt-4 w-100 rounded form-control" name="nomUser" placeholder="Votre nom complet" required >
-                <input type="text" class="p-2 mt-4 w-100 rounded form-control " name="emailUser" placeholder="Votre adresse email" required>
-                <textarea  class="w-100 mt-4 p-2  form-control " rows="5" name="messageUser" placeholder="Écrivez un message" required></textarea>
+                <input type="text" class="p-2 mt-4 w-100 rounded form-control" name="nom" placeholder="Votre nom complet" required >
+                <input type="text" class="p-2 mt-4 w-100 rounded form-control " name="email" placeholder="Votre adresse email" required>
+                <textarea  class="w-100 mt-4 p-2  form-control " rows="5" name="message" placeholder="Écrivez un message" required></textarea>
                 <button type="submit" class="btn btn-primary text-secondary  btn-lg    mt-4 fw-normal ">Envoyer</button>
             </form>
+            <?php
+                    if (isset($_POST['nom']) && isset($_POST['email']) && isset($_POST['message']) ) {
+                      try {
+                          // Establish a database connection (replace with your actual database configuration)
+                          include('connection.php');
+                          $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                          $nom = $_POST['nom'];
+                          $email = $_POST['email'];
+                          $messageUtulisateur = $_POST['message'];
+                          // Prepare the SQL query using placeholders
+                          $sqlQuery = 'INSERT INTO messages (nomCompletUtulisateur ,emailUtulisateur ,messageUtulisateur ) VALUES (:nomCompletUtulisateur,:emailUtulisateur,:messageUtulisateur)';
+                          $insertData = $db->prepare($sqlQuery);
+                          $insertData->execute([
+                              'nomCompletUtulisateur' => $nom,
+                              'emailUtulisateur' => $email,
+                              'messageUtulisateur' => $messageUtulisateur
+                          ]);
+                          header("Location: ".$_SERVER['PHP_SELF']);
+                          exit();
+                      } catch (PDOException $e) {
+                          echo 'An error occurred: ' . $e->getMessage();
+                      }
+                  }
+            ?>
+            
         </div>
         </div>
         <div class="col-lg-4  col-md-4 col-12 offset-lg-2 offset-md-2 mt-5 offset-0 m-auto contactContainer__image  ">
