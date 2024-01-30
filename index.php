@@ -297,23 +297,26 @@
     <!--hero section debut-->
     <section class="heroSection">
         <div id="carouselExampleDark" class="carousel carousel-dark slide heroSection__container  " data-bs-ride="carousel">
+            <?php if(isset($packs[1]) && isset($packs[2])) { ?>
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active bg-secondary  rounded-circle " aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleDark" class="bg-secondary  rounded-circle" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselExampleDark" class="bg-secondary  rounded-circle" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
+            <?php }?>
             <div class="carousel-inner active heroSection__container__carousel">
               <div class="carousel-item h-100  active heroSection__container__carousel__item" data-bs-interval="10000">
                 <img  src="<?php echo($packs[0]['imageProduit1']); ?>"  class="  d-block w-100 heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
-                    <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
+                    <h3 class="fs-5 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
                     <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2"><?php echo($packs[0]['nomProduit']); ?></h2>
                     <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p "><?php echo($packs[0]['sousTitreProduit']); ?></p>
                   </div> 
                   <a type="button" href="product?idProduit=<?php echo($packs[0]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5 heroSection__container__carousel__item__info__btn  fw-bolder">Acheter Maintenant</a>
                 </div>
               </div>
+              <?php if(isset($packs[1]) && isset($packs[2])) { ?>
               <div class="carousel-item h-100   heroSection__container__carousel__item" data-bs-interval="10000">
                 <img  src="<?php echo($packs[1]['imageProduit1']); ?>"  class=" d-block w-100 heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
@@ -336,10 +339,7 @@
                   <a type="button" href="product?idProduit=<?php echo($packs[2]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5 heroSection__container__carousel__item__info__btn  fw-bolder">Acheter Maintenant</a>
                 </div>
               </div>
-              
-              
-              
-               
+              <?php }  ?>
             </div>
           </div>
     </section>

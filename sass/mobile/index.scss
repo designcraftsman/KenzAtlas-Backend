@@ -1,0 +1,28 @@
+@media only screen and (max-width: 768px) {
+    .heroSection{ 
+        font-family: Inter,sans-serif;
+        &__container{
+            &__carousel{
+                &__item{
+                    position: relative;
+                    &__img{
+                        filter:brightness(70%);
+                        z-index: 99;
+                        width: 100%;
+                        height: 100vh;
+                        object-fit: cover;
+                    }
+                    &__info{
+                        z-index: 1;
+                        display: inline-block;
+                        position: absolute;
+                        top:36%;
+                        left: 11%;
+                        width: 70%;
+                        text-align: start;
+                    }
+                }
+            }
+        }
+    }
+}

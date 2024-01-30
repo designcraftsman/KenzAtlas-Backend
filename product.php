@@ -45,13 +45,16 @@
                   <div class="carousel-item active productPage__container__imgContainer__img h-100">
                     <img src="<?php echo($produit['imageProduit1']) ?>" class="object-fit-contain productPage__product__img d-block w-100 productPage__container__imgContainer__img__select " alt="...">
                   </div>
+                  <?php if(!isset($produit['imageProduit2']) || !isset($produit['imageProduit3'])) { ?>
                   <div class="carousel-item productPage__container__imgContainer__img h-100">
                     <img src="<?php echo($produit['imageProduit2']) ?>" class="object-fit-contain d-block w-100 productPage__container__imgContainer__img__select " alt="...">
                   </div>
                   <div class="carousel-item productPage__container__imgContainer__img h-100">
                     <img src="<?php echo($produit['imageProduit3']) ?>" class="object-fit-contain d-block w-100 productPage__container__imgContainer__img__select " alt="...">
                   </div>
+                  <?php } ?>
                 </div>
+                <?php if(!isset($produit['imageProduit2']) || !isset($produit['imageProduit3'])){ ?>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                   <span  aria-hidden="true"><i class="fa-solid fa-chevron-left fa-2xl productPage__container__imgContainer__chevrons " ></i></span>
                   <span class="visually-hidden">Previous</span>
@@ -60,6 +63,7 @@
                   <span  aria-hidden="true"><i class="fa-solid fa-chevron-right fa-2xl productPage__container__imgContainer__chevrons" ></i></span>
                   <span class="visually-hidden">Next</span>
                 </button>
+                <?php } ?>
               </div>   
             </div>
             <div class="col-lg-5 col-12  productPage__product mt-5">
@@ -84,7 +88,9 @@
                       </div>
                     </p>
                   </div>
+                  <a href="https://wa.me/+212684822768">
                     <i class="fa-brands fa-square-whatsapp  fa-2xl fs-1  " style="color: #43ce1c;"></i>
+                  </a>
                 </div>
                 <button id="addProductToCart"type="button"class="btn btn-primary text-secondary w-100 btn-lg fw-bolder ">Ajouter au panier</button>
             </div>
