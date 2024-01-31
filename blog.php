@@ -44,7 +44,7 @@
             ?>
             <div class="row align-items-center m-2 mt-5 blog__container__posts__post">
               <div class="col-lg-5 col-md-6 col-12 blog__container__posts__post__imgContainer">
-                <img src="<?php echo($article['imgArticle']); ?>" class=" blog__container__posts__post__imgContainer__img" alt="">
+                <img src="assets/<?php echo($article['imgArticle']); ?>" class=" blog__container__posts__post__imgContainer__img" alt="">
               </div>
               <div class="col-lg-7 col-md-6 col-12 blog__container__posts__post__text">
                 <span class="d-none blog__container__posts__post__text__idArticle"><?php echo($article['idArticle']); ?></span>

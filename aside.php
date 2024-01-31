@@ -23,7 +23,7 @@
                 <a href="article?idArticle=<?php echo($article['idArticle']); ?>" class="text-decoration-none text-dark">
                 <div class="row p-2 blog__container__aside__recentPosts align-content-center ">
                   <div class="col-4 blog__container__aside__recentPosts__img">
-                    <img src="<?php echo($article['imgArticle']) ?>" class="w-100 object-fit-cover " alt="">
+                    <img src="assets/<?php echo($article['imgArticle']) ?>" class="w-100 object-fit-cover " alt="">
                   </div>
                   <div class="col-8 blog__container__aside__recentPosts__text ">
                     <p class="fs-6 fw-lighter m-0"><?php echo($article['dateArticle']) ?></p>

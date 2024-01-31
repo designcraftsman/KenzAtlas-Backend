@@ -43,7 +43,12 @@
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active productPage__container__imgContainer__img h-100">
-                    <img src="<?php echo($produit['imageProduit1']) ?>" class="object-fit-contain productPage__product__img d-block w-100 productPage__container__imgContainer__img__select " alt="...">
+                    <img src="assets/<?php
+                    if($produit['etatProduit']=="pack promo"){
+                     echo($produit['imageProduit2']);}else{
+                      echo($produit['imageProduit1']);
+                     } 
+                     ?>" class="object-fit-contain productPage__product__img d-block w-100 productPage__container__imgContainer__img__select " alt="...">
                   </div>
                   <?php if(!isset($produit['imageProduit2']) || !isset($produit['imageProduit3'])) { ?>
                   <div class="carousel-item productPage__container__imgContainer__img h-100">
@@ -113,7 +118,12 @@
                 <div class="card border-0 m-auto w-100 ProductsCards" >
                   <a href="product?idProduit=<?php echo($produitVedette['idProduit']); ?>" class="text-decoration-none text-dark">
                   <div class="ProductsImageContainers">
-                    <img src="<?php echo($produitVedette['imageProduit1']); ?>" class="img-fluid card-img-top ProductsImages" alt="...">
+                    <img src="assets/<?php
+                    if($produitVedette['etatProduit']=="pack promo"){
+                     echo($produitVedette['imageProduit2']);}else{
+                      echo($produitVedette['imageProduit1']);
+                     } 
+                     ?>" class="img-fluid card-img-top ProductsImages" alt="...">
                     <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
                   </div>
                   <div class="card-body">

@@ -76,7 +76,12 @@
                 <div class="card border-0 m-auto w-100 ProductsCards" >
                   <a href="product?idProduit=<?php echo($produitVedette['idProduit']); ?>" class="text-decoration-none text-dark">
                   <div class="ProductsImageContainers">
-                    <img src="<?php echo($produitVedette['imageProduit1']); ?>" class="img-fluid card-img-top ProductsImages" alt="...">
+                    <img src="assets/<?php
+                    if($produitVedette['etatProduit']=="pack promo"){
+                     echo($produitVedette['imageProduit2']);}else{
+                      echo($produitVedette['imageProduit1']);
+                     } 
+                     ?>" class="img-fluid card-img-top ProductsImages" alt="...">
                     <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
                   </div>
                   <div class="card-body">

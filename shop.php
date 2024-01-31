@@ -159,7 +159,14 @@
                 <div class="card border-0  m-auto w-100" >
                   <a href="product" class="text-decoration-none text-dark">
                     <div class="ProductsImageContainers">
-                      <img src="<?php echo($produit['imageProduit1']); ?>" class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
+                      <img src="
+                      assets/<?php
+                    if($produit['etatProduit']==="pack promo"){
+                     echo($produit['imageProduit2']);}else{
+                      echo($produit['imageProduit1']);
+                     } 
+                     ?>
+                      " class="img-fluid card-img-top ProductsImages shop__container__products__list__product__img object-fit-cover" alt="...">
                       <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
                     </div>
                   <div class="card-body">

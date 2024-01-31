@@ -99,7 +99,7 @@ html {
   position: relative;
 }
 .heroSection__container__carousel__item__img {
-  filter: brightness(70%);
+  filter: brightness(85%);
   z-index: 99;
   width: 100%;
   height: 100vh;
