@@ -110,7 +110,7 @@
  <nav class="navbar navbar-light bg-primary fixed-top  p-0 m-0  ">
         <div class="container-fluid navbar__container m-0 p-0">
           <a class=" m-0 p-0 ps-3 " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-             <i  class="fa-solid fa-bars-staggered fa-xl navbar__container__icon navbar__icon "></i>
+            <img src="assets/img/icons/bars.svg" class="m-2" width="28">
           </a>
             <a class="navbar-brand " href="index">
                 <!--Logo image-->
@@ -309,9 +309,9 @@
                 <img  src="assets/<?php echo($packs[0]['imageProduit1']); ?>"  class="  d-block w-100 heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
-                    <h3 class="fs-5 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
-                    <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2"><?php echo($packs[0]['nomProduit']); ?></h2>
-                    <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p "><?php echo($packs[0]['sousTitreProduit']); ?></p>
+                    <h3 class="fs-4 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
+                    <h2 class="display-4  fw-bold mt-4 heroSection__container__carousel__item__info__h2"><?php echo($packs[0]['nomProduit']); ?></h2>
+                    <p class="fs-6 mt-4 heroSection__container__carousel__item__info__p "><?php echo($packs[0]['sousTitreProduit']); ?></p>
                   </div> 
                   <a type="button" href="product?idProduit=<?php echo($packs[0]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5 heroSection__container__carousel__item__info__btn  fw-bolder">Acheter Maintenant</a>
                 </div>
