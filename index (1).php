@@ -110,7 +110,7 @@
  <nav class="navbar navbar-light bg-primary fixed-top  p-0 m-0  ">
         <div class="container-fluid navbar__container m-0 p-0">
           <a class=" m-0 p-0 ps-3 " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-            <img src="assets/img/icons/bars.svg" class="m-2" width="28">
+             <i  class="fa-solid fa-bars-staggered fa-xl navbar__container__icon navbar__icon "></i>
           </a>
             <a class="navbar-brand " href="index">
                 <!--Logo image-->
@@ -309,7 +309,7 @@
                 <img  src="assets/<?php echo($packs[0]['imageProduit1']); ?>"  class="  d-block w-100 heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
-                    <h3 class="fs-4 fw-light heroSectiomn__container__carousel__item__info__h3 ">PACK</h3>
+                    <h3 class="fs-4 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
                     <h2 class="display-4  fw-bold mt-4 heroSection__container__carousel__item__info__h2"><?php echo($packs[0]['nomProduit']); ?></h2>
                     <p class="fs-6 mt-4 heroSection__container__carousel__item__info__p "><?php echo($packs[0]['sousTitreProduit']); ?></p>
                   </div> 
@@ -321,9 +321,9 @@
                 <img  src="<?php echo($packs[1]['imageProduit1']); ?>"  class=" d-block w-100 heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
-                    <h3 class="fs-5 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
-                    <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2"><?php echo($packs[1]['nomProduit']); ?></h2>
-                    <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p "><?php echo($packs[1]['sousTitreProduit']); ?></p>
+                    <h3 class="fs-4 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
+                    <h2 class="display-4  fw-bold mt-4 heroSection__container__carousel__item__info__h2"><?php echo($packs[1]['nomProduit']); ?></h2>
+                    <p class="fs-6 mt-4 heroSection__container__carousel__item__info__p "><?php echo($packs[1]['sousTitreProduit']); ?></p>
                   </div> 
                   <a type="button" href="product?idProduit=<?php echo($packs[1]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary heroSection__container__carousel__item__info__btn fs-5  fw-bolder">Acheter Maintenant</a>
                 </div>
@@ -332,9 +332,9 @@
                 <img  src="<?php echo($packs[2]['imageProduit1']); ?>"  class="object-fit-cover d-block w-100 heroSection__container__carousel__item__img " alt="...">
                 <div class=" heroSection__container__carousel__item__info    ">
                   <div class="heroSection__container__carousel__item__info__text ">
-                    <h3 class="fs-6 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
-                    <h2 class="fs-1  fw-bold mt-3 heroSection__container__carousel__item__info__h2"><?php echo($packs[2]['nomProduit']); ?></h2>
-                    <p class="fs-6 mt-3 heroSection__container__carousel__item__info__p "><?php echo($packs[2]['sousTitreProduit']); ?></p>
+                    <h3 class="fs-4 fw-light heroSection__container__carousel__item__info__h3 ">PACK</h3>
+                    <h2 class="display-4  fw-bold mt-4 heroSection__container__carousel__item__info__h2"><?php echo($packs[2]['nomProduit']); ?></h2>
+                    <p class="fs-6 mt-4 heroSection__container__carousel__item__info__p "><?php echo($packs[2]['sousTitreProduit']); ?></p>
                   </div> 
                   <a type="button" href="product?idProduit=<?php echo($packs[2]['idProduit']); ?>" class="btn btn-primary btn-lg text-secondary fs-5 heroSection__container__carousel__item__info__btn  fw-bolder">Acheter Maintenant</a>
                 </div>
@@ -362,7 +362,7 @@
                      echo($produit['imageProduit2']);}else{
                       echo($produit['imageProduit1']);
                      } 
-                     ?>" loading="lazy" class="img-fluid card-img-top ProductsImages" alt="...">
+                     ?>"  class="img-fluid card-img-top ProductsImages" alt="...">
               <button class="btn btn-primary   rounded-0 btn-lg fw-light text-secondary ProductsImagesBtns">DECOUVRIR</button>
             </div>
             <div class="card-body">
@@ -394,7 +394,7 @@
     <section class="container-fluid text-center mt-5 categoriesSection">
       <div class="row categoriesSection__container">
         <div class="col-lg-6 col-12   p-0 categoriesSection__container__item mt-2 mb-4">
-          <img loading="lazy" src="assets/img/homePage/categoriesSection/haircare.jpg " class="w-100 h-100 reveal" alt="">
+          <img  src="assets/img/homePage/categoriesSection/haircare.jpg " class="w-100 h-100 reveal" alt="">
           <div class="categoriesSection__container__item__info text-secondary reveal">
             <h3 class="categoriesSection__container__item__info__h3 fs-2 fw-lighter   ">Meilleur de</h3>
             <h2 class="categoriesSection__container__item__info__h2 fs-1 fw-bolder ">SOIN DES <br> CHEVEUX</h2>
@@ -402,7 +402,7 @@
           </div>
         </div>
         <div class="col-lg-6 col-12  p-0  categoriesSection__container__item mt-5 ">
-          <img loading="lazy" src="assets/img/homePage/categoriesSection/skincare2.jpg " class="w-100 h-100 reveal" alt="">
+          <img  src="assets/img/homePage/categoriesSection/skincare2.jpg " class="w-100 h-100 reveal" alt="">
           <div class="categoriesSection__container__item__info text-secondary reveal ">
             <h3 class="categoriesSection__container__item__info__h3 fs-2 fw-lighter ">Meilleur de</h3>
             <h2 class="categoriesSection__container__item__info__h2 fs-1 fw-bolder ">SOIN DE <br> LA PEAU</h2>
@@ -422,7 +422,7 @@
         <div class="col-lg-4 col-md-6 col-12 infoSection__container__item  mt-5 ">
           <div class="infoSection__container__item__icon m-3 reveal"><i class="fa-solid fa-truck display-1 text-primary "></i></div>
           <h2 class="infoSection__container__item__title  m-4 fs-3 fw-bold 3  reveal ">Livraison gratuite</h2>
-          <h3 class="infoSection__container__item__subTitle fw-normal fs-5  reveal">Livraison gratuite pour tous les commandes</h3>
+          <h3 class="infoSection__container__item__subTitle fw-normal fs-5  reveal">Livraison gratuite pour toutes les commandes</h3>
         </div>
         <div class="col-lg-4 col-md-6 col-12 infoSection__container__item  mt-5 ">
           <div class="infoSection__container__item__icon m-3 reveal"><i class="fa-solid fa-arrow-right-arrow-left display-1  text-primary "></i></div>
